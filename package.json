@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:css": "npx @tailwindcss/cli -i assets/css/app.css -o static/css/build.css",
+    "watch:css": "npx @tailwindcss/cli -i assets/css/app.css -o static/css/build.css --watch",
+    "serve": "hugo server --disableFastRender"
   },
   "repository": {
     "type": "git",
