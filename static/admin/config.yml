@@ -1,0 +1,25 @@
+backend:
+  name: git-gateway
+  repo: nomisK1/hugotest
+  branch: main # Branch to update
+  base_url: https://api.netlify.com
+
+# These lines should match your site URL
+site_url: https://example.org
+display_url: https://example.org
+
+# Media files will be stored in the repo under static/images
+media_folder: static/images
+public_folder: /images
+
+collections:
+  - name: "posts"
+    label: "Posts"
+    folder: "content/posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Draft", name: "draft", widget: "boolean", default: true }
+      - { label: "Body", name: "body", widget: "markdown" }
