@@ -1,5 +1,19 @@
 {{ define "main" }}
+<h1>{{ .Title }}</h1>
 <div>
     {{ .Content }}
+</div>
+
+<!-- Recent posts section -->
+<div>
+    <h2>Recent Posts</h2>
+    <ul>
+        {{ range first 3 (where .Site.RegularPages "Section" "blog") }}
+        <li>
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        </li>
+        {{ end }}
+    </ul>
+    <a href="/blog/">View all posts →</a>
 </div>
 {{ end }}
