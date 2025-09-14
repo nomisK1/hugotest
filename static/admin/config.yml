@@ -7,8 +7,8 @@ backend:
 site_url: https://www.blauerzettel.de
 display_url: https://blauerzettel.de
 
-media_folder: static/images
-public_folder: /images
+media_folder: static/media
+public_folder: /media
 
 collections:
   - name: "blog"
@@ -17,8 +17,8 @@ collections:
     folder: "content/blog"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    filter:
-      type: "post"
+    path: "{{year}}/{{slug}}"
+    filter: { field: "type", value: "post" }
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Description", name: "description", widget: "string" }
