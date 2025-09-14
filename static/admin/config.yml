@@ -20,12 +20,12 @@ collections:
     path: "{{year}}/{{slug}}"
     filter: { field: "type", value: "post" }
     fields:
-      - { label: "Title", name: "title", widget: "string", default: "{{slug}}" }
+      - { label: "Title", name: "title", widget: "string" }
       - {
           label: "Description",
           name: "description",
           widget: "string",
-          default: "...",
+          required: false,
         }
       - { label: "Publish Date", name: "date", widget: "datetime", default: "{{now}}" }
       - { label: "Draft", name: "draft", widget: "boolean", default: true }
@@ -34,4 +34,4 @@ collections:
       - { label: "Categories", name: "categories", widget: "list", default: ["general"] }
       - { label: "Type", name: "type", widget: "hidden", default: "post" }
       - { label: "Layout", name: "layout", widget: "hidden", default: "single" }
-      - { label: "Body", name: "body", widget: "markdown", default: "..." }
+      - { label: "Body", name: "body", widget: "markdown" }
