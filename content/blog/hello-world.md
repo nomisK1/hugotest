@@ -1,9 +1,9 @@
 ---
-title: "Welcome"
+title: "Hello World"
 description: ""
 type: "post"
 layout: "single"
-date: "2025-09-14T17:34:58+02:00"
+date: "2025-09-14T17:34:54+02:00"
 draft: false
 author:
   name: ""
@@ -12,4 +12,4 @@ tags: []
 categories: []
 ---
 
-Welcome!
+Hello World!
