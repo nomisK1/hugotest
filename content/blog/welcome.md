@@ -1,7 +1,7 @@
 ---
-title: '{{ replace .File.ContentBaseName "-" " " | title }}'
+title: "Welcome"
 description: ""
-date: "{{ .Date }}"
+date: "2025-09-14T18:42:49+02:00"
 draft: true
 author:
   name: ""
@@ -12,4 +12,4 @@ type: "post"
 layout: "single"
 ---
 
-Lorem ipsum dolor sit amet.
+Welcome!

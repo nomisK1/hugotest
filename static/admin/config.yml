@@ -32,4 +32,6 @@ collections:
           - { label: "Email", name: "email", widget: "string" }
       - { label: "Tags", name: "tags", widget: "list", default: [] }
       - { label: "Categories", name: "categories", widget: "list", default: [] }
+      - { label: "Type", name: "type", widget: "hidden", default: "post" }
+      - { label: "Layout", name: "layout", widget: "hidden", default: "single" }
       - { label: "Body", name: "body", widget: "markdown" }
