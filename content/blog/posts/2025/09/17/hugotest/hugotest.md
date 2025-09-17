@@ -25,3 +25,7 @@ thumbnail: hugotest.png
 <!-- Display thumbnail at the bottom -->
 
 ![Thumbnail](../hugotest.png "alt")
+
+{{ with .Resources.GetMatch .Params.thumbnail }}
+![Thumbnail]({{ .RelPermalink }})
+{{ end }}
