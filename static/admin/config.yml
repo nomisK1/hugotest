@@ -15,7 +15,7 @@ collections:
     label_singular: "Post"
     folder: "content/blog"
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    slug: "{{slug}}"
     path: "posts/{{year}}/{{month}}/{{day}}/{{slug}}/{{slug}}"
     filter: { field: "layout", value: "single" }
     fields:
