@@ -3,8 +3,8 @@ backend:
   repo: nomisK1/hugotest
   branch: master
 
-site_url: https://www.blauerzettel.de
-display_url: https://blauerzettel.de
+site_url: https://hugotestin.netlify.app/
+display_url: https://hugotestin.netlify.app/
 
 media_folder: static/media
 public_folder: /media
@@ -17,7 +17,7 @@ collections:
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     path: "{{year}}/{{slug}}"
-    filter: { field: "type", value: "post" }
+    filter: { field: "type", value: "blog" }
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - {
