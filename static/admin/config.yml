@@ -16,8 +16,8 @@ collections:
     folder: "content/blog"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    path: "{{year}}/{{slug}}"
-    filter: { field: "type", value: "blog" }
+    path: "posts/{{year}}/{{slug}}"
+    filter: { field: "layout", value: "single" }
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - {
