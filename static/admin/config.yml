@@ -19,7 +19,16 @@ collections:
     path: "posts/{{year}}/{{slug}}"
     filter: { field: "layout", value: "single" }
     fields:
+      - { label: "Type", name: "type", widget: "hidden", default: "blog" }
+      - { label: "Layout", name: "layout", widget: "hidden", default: "single" }
+      - {
+          label: "Featured Image",
+          name: "thumbnail",
+          widget: "image",
+          max_file_size: 5242880,
+        } # 5MB
       - { label: "Title", name: "title", widget: "string" }
+      - { label: "Author", name: "author", widget: "string", required: false }
       - {
           label: "Description",
           name: "description",
@@ -33,7 +42,6 @@ collections:
           default: "{{now}}",
         }
       - { label: "Draft", name: "draft", widget: "boolean", default: true }
-      - { label: "Author", name: "author", widget: "string", required: false }
       - { label: "Tags", name: "tags", widget: "list", default: ["new"] }
       - {
           label: "Categories",
@@ -41,6 +49,11 @@ collections:
           widget: "list",
           default: ["general"],
         }
-      - { label: "Type", name: "type", widget: "hidden", default: "blog" }
-      - { label: "Layout", name: "layout", widget: "hidden", default: "single" }
       - { label: "Body", name: "body", widget: "markdown" }
+
+commit_messages:
+  create: "post: create {{collection}} → {{slug}}"
+  update: "post: update {{collection}} → {{slug}}"
+  delete: "post: delete {{collection}} → {{slug}}"
+  uploadMedia: "media: upload {{path}}"
+  deleteMedia: "media: delete {{path}}"
