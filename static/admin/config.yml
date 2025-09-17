@@ -2,7 +2,6 @@ backend:
   name: git-gateway
   repo: nomisK1/hugotest
   branch: master
-  base_url: https://api.netlify.com
 
 site_url: https://www.blauerzettel.de
 display_url: https://blauerzettel.de
