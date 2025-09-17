@@ -19,13 +19,12 @@ collections:
     path: "posts/{{year}}/{{slug}}"
     filter: { field: "layout", value: "single" }
     fields:
-      - { label: "Type", name: "type", widget: "hidden", default: "blog" }
-      - { label: "Layout", name: "layout", widget: "hidden", default: "single" }
       - {
           label: "Featured Image",
           name: "thumbnail",
           widget: "image",
           max_file_size: 5242880,
+          required: false,
         } # 5MB
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Author", name: "author", widget: "string", required: false }
@@ -49,6 +48,8 @@ collections:
           widget: "list",
           default: ["general"],
         }
+      - { label: "Type", name: "type", widget: "hidden", default: "blog" }
+      - { label: "Layout", name: "layout", widget: "hidden", default: "single" }
       - { label: "Body", name: "body", widget: "markdown" }
 
 commit_messages:
