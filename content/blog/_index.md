@@ -1,7 +1,7 @@
 ---
 title: "My Blog"
 description: "My personal blog"
-type: "page"
+type: "blog"
 layout: "list"
 ---
 
