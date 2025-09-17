@@ -10,14 +10,14 @@ media_folder: static/media
 public_folder: /media
 
 collections:
-  - name: "blog"
+  - name: "posts"
     label: "Blog"
     label_singular: "Post"
-    folder: "content/blog"
+    folder: "content/_posts"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     path: "{{year}}/{{slug}}"
-    filter: { field: "type", value: "blog" }
+    filter: { field: "type", value: "post" }
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - {
