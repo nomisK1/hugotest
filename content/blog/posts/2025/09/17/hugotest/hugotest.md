@@ -25,4 +25,4 @@ thumbnail: hugotest.png
 
 <!-- Display thumbnail at the bottom -->
 
-![Thumbnail](/static/media/{{ .Params.thumbnail }})
+![Thumbnail]({{ .Params.thumbnail }})
