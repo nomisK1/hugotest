@@ -53,8 +53,8 @@ collections:
       - { label: "Body", name: "body", widget: "markdown" }
 
 commit_messages:
-  create: "post: create {{collection}} → {{slug}}"
-  update: "post: update {{collection}} → {{slug}}"
-  delete: "post: delete {{collection}} → {{slug}}"
+  create: "post: create {{collection}} -> {{slug}}"
+  update: "post: update {{collection}} -> {{slug}}"
+  delete: "post: delete {{collection}} -> {{slug}}"
   uploadMedia: "media: upload {{path}}"
   deleteMedia: "media: delete {{path}}"
