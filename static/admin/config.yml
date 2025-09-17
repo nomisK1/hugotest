@@ -16,7 +16,7 @@ collections:
     folder: "content/blog"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    path: "posts/{{year}}/{{slug}}"
+    path: "posts/{{year}}/{{month}}/{{day}}/{{slug}}"
     filter: { field: "layout", value: "single" }
     fields:
       - {
