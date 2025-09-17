@@ -19,13 +19,6 @@ collections:
     path: "posts/{{year}}/{{month}}/{{day}}/{{slug}}/{{slug}}"
     filter: { field: "layout", value: "single" }
     fields:
-      - {
-          label: "Featured Image",
-          name: "thumbnail",
-          widget: "image",
-          max_file_size: 5242880,
-          required: false,
-        } # 5MB
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Author", name: "author", widget: "string", required: false }
       - {
@@ -51,10 +44,17 @@ collections:
       - { label: "Type", name: "type", widget: "hidden", default: "blog" }
       - { label: "Layout", name: "layout", widget: "hidden", default: "single" }
       - { label: "Body", name: "body", widget: "markdown" }
+      - {
+          label: "Featured Image",
+          name: "thumbnail",
+          widget: "image",
+          max_file_size: 5242880,
+          required: false,
+        } # 5MB
 
 commit_messages:
-  create: "post: create {{collection}} -> {{slug}}"
-  update: "post: update {{collection}} -> {{slug}}"
-  delete: "post: delete {{collection}} -> {{slug}}"
+  create: "post: create {{collection}} {{slug}}"
+  update: "post: update {{collection}} {{slug}}"
+  delete: "post: delete {{collection}} {{slug}}"
   uploadMedia: "media: upload {{path}}"
   deleteMedia: "media: delete {{path}}"
