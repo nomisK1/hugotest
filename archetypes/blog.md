@@ -6,7 +6,7 @@ draft: true
 author: ""
 tags: []
 categories: []
-type: "post"
+type: "blog"
 layout: "single"
 ---
 
