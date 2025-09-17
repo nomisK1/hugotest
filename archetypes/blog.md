@@ -8,6 +8,7 @@ tags: []
 categories: []
 type: "blog"
 layout: "single"
+thumbnail: ""
 ---
 
 Lorem ipsum dolor sit amet.

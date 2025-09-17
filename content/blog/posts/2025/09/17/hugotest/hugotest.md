@@ -1,5 +1,4 @@
 ---
-thumbnail: hugotest.png
 title: <3 Hugotest
 author: testin
 description: a test
@@ -11,7 +10,9 @@ categories:
   - general
 type: blog
 layout: single
+thumbnail: hugotest.png
 ---
+
 # static/media/test.txt
 
 [Download test.txt](/static/media/test.txt)
@@ -21,3 +22,7 @@ layout: single
 {{< youtube dQw4w9WgXcQ >}}
 
 [Watch on YouTube](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+
+<!-- Display thumbnail at the bottom -->
+
+![Thumbnail](/static/media/{{ .Params.thumbnail }})
