@@ -6,7 +6,17 @@
   {{ partial "base/header.html" . }}
   <main>{{ block "main" . }}{{ end }}</main>
   {{ partial "base/footer.html" . }}
-  {{ partial "base/scripts.html" . }}
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
 </body>
 
 </html>
