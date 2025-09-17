@@ -2,7 +2,7 @@
 title: <3 Hugotest
 author: testin
 description: a test
-date: 2025-09-17T23:54:00.000+02:00
+date: 2025-09-18T00:28:00.000+02:00
 draft: false
 tags:
   - new
@@ -12,7 +12,6 @@ type: blog
 layout: single
 thumbnail: hugotest.png
 ---
-
 # static/media/test.txt
 
 [Download test.txt](/static/media/test.txt)
@@ -25,4 +24,4 @@ thumbnail: hugotest.png
 
 <!-- Display thumbnail at the bottom -->
 
-![Thumbnail]({{ .Params.thumbnail }})
+![Thumbnail](../hugotest.png "alt")
