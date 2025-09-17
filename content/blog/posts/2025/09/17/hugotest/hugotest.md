@@ -24,4 +24,4 @@ thumbnail: hugotest.png
 
 <!-- Display thumbnail at the bottom -->
 
-![alt](hugotest.png "test")
+![Thumbnail](../hugotest.png "alt")
