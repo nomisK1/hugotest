@@ -27,11 +27,21 @@ collections:
           widget: "string",
           required: false,
         }
-      - { label: "Publish Date", name: "date", widget: "datetime", default: "{{now}}" }
+      - {
+          label: "Publish Date",
+          name: "date",
+          widget: "datetime",
+          default: "{{now}}",
+        }
       - { label: "Draft", name: "draft", widget: "boolean", default: true }
-      - { label: "Author", name: "author", widget: "string", default: "anonymous" }
+      - { label: "Author", name: "author", widget: "string", required: false }
       - { label: "Tags", name: "tags", widget: "list", default: ["new"] }
-      - { label: "Categories", name: "categories", widget: "list", default: ["general"] }
-      - { label: "Type", name: "type", widget: "hidden", default: "post" }
+      - {
+          label: "Categories",
+          name: "categories",
+          widget: "list",
+          default: ["general"],
+        }
+      - { label: "Type", name: "type", widget: "hidden", default: "blog" }
       - { label: "Layout", name: "layout", widget: "hidden", default: "single" }
       - { label: "Body", name: "body", widget: "markdown" }

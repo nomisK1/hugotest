@@ -1,15 +1,13 @@
 ---
-title: "Welcome"
+title: 'Welcome'
 description: ""
-date: "2025-09-14T18:42:49+02:00"
+date: "2025-09-17T10:59:58+02:00"
 draft: true
-author:
-  name: ""
-  email: ""
+author: ""
 tags: []
 categories: []
-type: "post"
+type: "blog"
 layout: "single"
 ---
 
-Welcome!
+Lorem ipsum dolor sit amet.

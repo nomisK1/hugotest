@@ -3,12 +3,10 @@ title: '{{ replace .File.ContentBaseName "-" " " | title }}'
 description: ""
 date: "{{ .Date }}"
 draft: true
-author:
-  name: ""
-  email: ""
+author: ""
 tags: []
 categories: []
-type: "post"
+type: "blog"
 layout: "single"
 ---
 

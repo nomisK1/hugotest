@@ -1,15 +1,13 @@
 ---
-title: "Hello World"
+title: 'Hello World'
 description: ""
-date: "2025-09-14T18:42:45+02:00"
-draft: false
-author:
-  name: ""
-  email: ""
+date: "2025-09-17T10:59:48+02:00"
+draft: true
+author: ""
 tags: []
 categories: []
-type: "post"
+type: "blog"
 layout: "single"
 ---
 
-Hello World!
+Lorem ipsum dolor sit amet.
