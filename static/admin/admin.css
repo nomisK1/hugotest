@@ -1,0 +1,5 @@
+/* Resize the CMS logo */
+img[alt="logo"] {
+  max-width: 150px;
+  height: auto;
+}

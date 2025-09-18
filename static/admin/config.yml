@@ -15,7 +15,7 @@ display_url: https://hugotestin.netlify.app/
 
 media_folder: static/media
 public_folder: /media
-logo_url: /svg/logo/logo.svg
+logo_url: /svg/icons/bass.svg
 
 collections:
   - name: "blog"
