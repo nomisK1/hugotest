@@ -2,7 +2,7 @@
 title: <3 Hugotest
 author: testin
 description: a test
-date: 2025-09-18T00:28:00.000+02:00
+date: 2025-09-18T12:24:00.000+02:00
 draft: false
 tags:
   - new
@@ -12,11 +12,9 @@ type: blog
 layout: single
 thumbnail: hugotest.png
 ---
-# static/media/test.txt
-
 [Download test.txt](/static/media/test.txt)
 
-[testfile](../test.txt)[](../test.txt)
+[testfile](../test.txt)
 
 {{< youtube dQw4w9WgXcQ >}}
 
@@ -24,8 +22,6 @@ thumbnail: hugotest.png
 
 <!-- Display thumbnail at the bottom -->
 
-![Thumbnail](../hugotest.png "alt")
+![Thumbnail1](../hugotest.png "alt")
 
-{{ with .Resources.GetMatch .Params.thumbnail }}
-![Thumbnail]({{ .RelPermalink }})
-{{ end }}
+![Thumbnail2](hugotest.png "alt")
