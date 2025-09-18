@@ -2,7 +2,7 @@
 img[alt="Logo"] {
   max-width: 70%;
   height: auto;
-  color: #ff0082;
+  color: #ff0082 !important;
 }
 
 /* Hide the Decap logo */
@@ -11,6 +11,6 @@ img[alt="Logo"] {
 }
 
 /* Hide the Netlify logo */
-[class*="callOut"] {
+.modal-container [class*="callOut"] {
   display: none !important;
 }
