@@ -2,26 +2,16 @@
   --primary-color: #ff0082;
   --logo-filter: invert(13%) sepia(99%) saturate(7471%) hue-rotate(316deg)
     brightness(101%) contrast(101%);
-  --logo-filter-custom: brightness(0) saturate(100%) invert(65%) sepia(86%)
-    saturate(4563%) hue-rotate(360deg);
 }
 
 /* Resize and color the CMS logo */
 [class*="CustomIconWrapper"] img {
   max-width: 70%;
   height: auto;
-  filter: var(--logo-filter-custom);
+  filter: var(--logo-filter);
 }
 
-/* Hide Netlify logos*/
-[class*="NetlifyCreditIcon"],
-[class*="modalContainer"] a,
-.callOut,
-a.callOut,
-[role="dialog"] .callOut,
-div .callOut,
-* .callOut {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
+/* Hide Decap logo*/
+[class*="NetlifyCreditIcon"] {
+  display: none;
 }
