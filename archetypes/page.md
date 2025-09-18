@@ -2,7 +2,7 @@
 title: '{{ replace .File.ContentBaseName "-" " " | title }}'
 description: ""
 type: "page"
-layout: ""
+layout: "all"
 ---
 
 Lorem ipsum dolor sit amet.
