@@ -33,19 +33,13 @@
                     // Form fields shown when user clicks the YouTube button
                     fields: [{ name: 'id', label: 'YouTube Video ID', widget: 'string', hint: 'Video ID or full URL' }],
                     // Regex to detect existing YouTube shortcodes in markdown
-                    pattern: /^{{< youtube ([a-zA-Z0-9_-]+) >}}$/,
+                    pattern: /{{< youtube\s+(?<id>[A-Za-z0-9\-]+)\s+>}}/,
                     // Extract video ID from existing shortcode when editing
                     fromBlock: match => ({ id: match[1] }),
                     // Generate Hugo shortcode from form data
                     toBlock: obj => `{{< youtube ${obj.id} >}}`,
                     // Show YouTube video preview in the editor
-                    toPreview: obj => {
-                        // Extract video ID from full YouTube URL or use direct ID
-                        const videoId = obj.id.includes('youtu') ?
-                            obj.id.match(/(?:youtu\.be\/|v=)([a-zA-Z0-9_-]{11})/)?.[1] || obj.id : obj.id;
-                        return `<div class="relative pb-[56.25%] bg-black rounded-lg overflow-hidden">
-                        <iframe src="https://youtube.com/embed/${videoId}" class="absolute inset-0 w-full h-full border-0" allowfullscreen></iframe></div>`;
-                    }
+                    toPreview: obj => `<div class="relative pb-[56.25%] bg-black rounded-lg overflow-hidden"><iframe src="https://youtube.com/embed/${obj.id}" class="absolute inset-0 w-full h-full border-0" allowfullscreen></iframe></div>`
                 });
             }
         });
