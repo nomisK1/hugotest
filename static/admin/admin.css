@@ -1,13 +1,14 @@
-/* Resize the CMS logo */
+/* Resize and color the CMS logo */
 [class*="CustomIconWrapper"] {
+  color: #ff0082 !important;
+}
+[class*="CustomIconWrapper"] img {
   max-width: 70%;
   height: auto;
-  color: #ff0082 !important;
 }
 
 /* Hide Netlify logos */
-[class*="NetlifyCreditIcon"],
-[class*="callOut"],
-.callOut {
+.callOut,
+a.callOut {
   display: none !important;
 }
