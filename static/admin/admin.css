@@ -7,11 +7,10 @@
 /* Resize and color the CMS logo */
 [class*="CustomIconWrapper"] img {
   max-width: 70%;
-  height: auto;
   filter: var(--logo-filter);
 }
 
 /* Hide Decap logo*/
 [class*="NetlifyCreditIcon"] {
-  display: none;
+  display: none !important;
 }
