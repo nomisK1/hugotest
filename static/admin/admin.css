@@ -1,16 +1,13 @@
 /* Resize the CMS logo */
-img[alt="Logo"] {
+[class*="CustomIconWrapper"] {
   max-width: 70%;
   height: auto;
-  fill: #ff0082 !important;
+  color: #ff0082 !important;
 }
 
-/* Hide the Decap logo */
-[class*="NetlifyCreditIcon"] {
-  display: none !important;
-}
-
-/* Hide the Netlify logo */
-body [class*="callOut"] {
+/* Hide Netlify logos */
+[class*="NetlifyCreditIcon"],
+[class*="callOut"],
+.callOut {
   display: none !important;
 }
