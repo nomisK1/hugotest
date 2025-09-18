@@ -25,3 +25,7 @@ thumbnail: hugotest.png
 ![Thumbnail1](../hugotest.png "alt")
 
 ![Thumbnail2](hugotest.png "alt")
+
+
+
+{{< youtube https://www.youtube.com/watch?v=dQw4w9WgXcQ >}}
