@@ -2,12 +2,21 @@ backend:
   name: git-gateway
   repo: nomisK1/hugotest
   branch: master
+  commit_messages:
+    create: "Post: Create {{collection}} {{slug}}"
+    update: "Post: Update {{collection}} {{slug}}"
+    delete: "Post: Delete {{collection}} {{slug}}"
+    uploadMedia: "Media: Upload {{path}}"
+    deleteMedia: "Media: Delete {{path}}"
+    openAuthoring: "{{message}}"
 
 site_url: https://hugotestin.netlify.app/
 display_url: https://hugotestin.netlify.app/
 
 media_folder: static/media
 public_folder: /media
+
+# logo_url: https://your-site.com/images/logo.svg
 
 collections:
   - name: "blog"
@@ -51,10 +60,3 @@ collections:
           max_file_size: 5242880,
           required: false,
         } # 5MB
-
-commit_messages:
-  create: "post: create {{collection}} {{slug}}"
-  update: "post: update {{collection}} {{slug}}"
-  delete: "post: delete {{collection}} {{slug}}"
-  uploadMedia: "media: upload {{path}}"
-  deleteMedia: "media: delete {{path}}"
