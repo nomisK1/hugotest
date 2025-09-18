@@ -5,12 +5,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Content Manager</title>
+
     <!-- Netlify Identity for authentication -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
     <!-- DECAP CMS core script -->
     <script defer src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
     <!-- Alternative CDN (jsDelivr) - uncomment if unpkg is down -->
     <!-- <script defer src="https://cdn.jsdelivr.net/npm/decap-cms@^3.0.0/dist/decap-cms.js"></script> -->
+
     <!-- Custom admin styles -->
     <link rel="stylesheet" href="admin.css">
 </head>
@@ -18,18 +21,17 @@
 <body>
     <!-- CMS mount point -->
     <div id="nc-root"></div>
+
     <!-- YouTube shortcode component - loads after CMS initializes -->
     <script>
         window.addEventListener('load', function () {
             // Ensure CMS is loaded before registering components
             if (typeof CMS !== 'undefined') {
-
                 // Simple function to extract YouTube video ID
                 function getYouTubeID(input) {
                     const match = input.match(/(?<=(?:v=|vi=|v%3D|embed\/|v\/|e\/|youtu\.be\/|\/u\/\d+\/))[a-zA-Z0-9_-]{11}/);
-                    return match ? match[1] : input;
+                    return match ? match[0] : input;
                 }
-
                 // Register YouTube shortcode component for DECAP CMS markdown editor
                 CMS.registerEditorComponent({
                     // Unique identifier for this component
