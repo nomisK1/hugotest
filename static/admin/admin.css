@@ -2,8 +2,8 @@
   --primary-color: #ff0082;
   --logo-filter: invert(13%) sepia(99%) saturate(7471%) hue-rotate(316deg)
     brightness(101%) contrast(101%);
-  --logo-filter-custom: brightness(0) saturate(100%) invert(59%) sepia(11%)
-    saturate(3000%) hue-rotate(191deg);
+  --logo-filter-custom: brightness(0) saturate(100%) invert(65%) sepia(86%)
+    saturate(4563%) hue-rotate(360deg);
 }
 
 /* Resize and color the CMS logo */
@@ -15,6 +15,13 @@
 
 /* Hide Netlify logos*/
 [class*="NetlifyCreditIcon"],
-[class*="callOut"] {
+[class*="modalContainer"] a,
+.callOut,
+a.callOut,
+[role="dialog"] .callOut,
+div .callOut,
+* .callOut {
   display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
 }
