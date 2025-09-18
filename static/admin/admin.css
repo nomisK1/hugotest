@@ -13,10 +13,8 @@
   filter: var(--logo-filter-custom);
 }
 
-/* Hide Netlify logos - target modal content */
-[class*="NetlifyCreditIcon"],
-.callOut,
-a[href*="netlify.com"],
-*:contains("Coded by Netlify") {
+/* Hide Netlify logos*/
+[class*="NetlifyCreditIcon"] span,
+[class*="callOut"] a {
   display: none !important;
 }
