@@ -2,4 +2,15 @@
 img[alt="Logo"] {
   max-width: 70%;
   height: auto;
+  fill: "#FF0082";
+}
+
+/* Hide the Decap icon */
+[class*="NetlifyCreditIcon"] {
+  display: none;
+}
+
+/* Hide the Netlify logo */
+.callOut {
+  display: none;
 }
