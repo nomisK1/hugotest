@@ -5,21 +5,51 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Content Manager</title>
-
-    <!-- Include the script that enables Netlify Identity on this page -->
+    <!-- Netlify Identity for authentication -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-
-    <!-- Include the script that builds the page and powers Decap CMS -->
+    <!-- DECAP CMS core script -->
     <script defer src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
     <!-- Alternative CDN (jsDelivr) - uncomment if unpkg is down -->
     <!-- <script defer src="https://cdn.jsdelivr.net/npm/decap-cms@^3.0.0/dist/decap-cms.js"></script> -->
-
+    <!-- Custom admin styles -->
     <link rel="stylesheet" href="admin.css">
 </head>
 
 <body>
-    <!-- Add the CMS root div -->
+    <!-- CMS mount point -->
     <div id="nc-root"></div>
+
+    <!-- YouTube shortcode component - loads after CMS initializes -->
+    <script>
+        window.addEventListener('load', function () {
+            // Ensure CMS is loaded before registering components
+            if (typeof CMS !== 'undefined') {
+                // Register YouTube shortcode component for DECAP CMS markdown editor
+                CMS.registerEditorComponent({
+                    // Unique identifier for this component
+                    id: "youtube",
+                    // Button label in the editor toolbar
+                    label: "YouTube",
+                    // Form fields shown when user clicks the YouTube button
+                    fields: [{ name: 'id', label: 'YouTube Video ID', widget: 'string', hint: 'Video ID or full URL' }],
+                    // Regex to detect existing YouTube shortcodes in markdown
+                    pattern: /^{{< youtube ([a-zA-Z0-9_-]+) >}}$/,
+                    // Extract video ID from existing shortcode when editing
+                    fromBlock: match => ({ id: match[1] }),
+                    // Generate Hugo shortcode from form data
+                    toBlock: obj => `{{< youtube ${obj.id} >}}`,
+                    // Show YouTube video preview in the editor
+                    toPreview: obj => {
+                        // Extract video ID from full YouTube URL or use direct ID
+                        const videoId = obj.id.includes('youtu') ?
+                            obj.id.match(/(?:youtu\.be\/|v=)([a-zA-Z0-9_-]{11})/)?.[1] || obj.id : obj.id;
+                        return `<div class="relative pb-[56.25%] bg-black rounded-lg overflow-hidden">
+                        <iframe src="https://youtube.com/embed/${videoId}" class="absolute inset-0 w-full h-full border-0" allowfullscreen></iframe></div>`;
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>
