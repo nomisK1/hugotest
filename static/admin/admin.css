@@ -1,14 +1,16 @@
 /* Resize and color the CMS logo */
-[class*="CustomIconWrapper"] {
-  color: #ff0082 !important;
-}
 [class*="CustomIconWrapper"] img {
   max-width: 70%;
   height: auto;
+  filter: invert(13%) sepia(99%) saturate(7471%) hue-rotate(316deg)
+    brightness(101%) contrast(101%) !important;
 }
 
-/* Hide Netlify logos */
+/* Hide Netlify logos - target modal content */
+[class*="NetlifyCreditIcon"],
 .callOut,
-a.callOut {
+a.callOut,
+[role="dialog"] .callOut,
+[role="dialog"] a.callOut {
   display: none !important;
 }
