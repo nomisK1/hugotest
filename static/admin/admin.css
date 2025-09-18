@@ -1,8 +1,8 @@
 /* Resize the CMS logo */
-img[alt="Logo"] {
+.svg-logo {
   max-width: 70%;
   height: auto;
-  fill: #ff0082 !important;
+  color: #ff0082;
 }
 
 /* Hide the Decap logo */
@@ -11,6 +11,6 @@ img[alt="Logo"] {
 }
 
 /* Hide the Netlify logo */
-body [class*="callOut"] {
+a.callOut[href*="netlify.com"] {
   display: none !important;
 }
