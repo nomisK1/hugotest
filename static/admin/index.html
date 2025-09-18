@@ -23,6 +23,13 @@
         window.addEventListener('load', function () {
             // Ensure CMS is loaded before registering components
             if (typeof CMS !== 'undefined') {
+
+                // Simple function to extract YouTube video ID
+                function getYouTubeID(input) {
+                    const match = input.match(/(?<=(?:v=|vi=|v%3D|embed\/|v\/|e\/|youtu\.be\/|\/u\/\d+\/))[a-zA-Z0-9_-]{11}/);
+                    return match ? match[1] : input;
+                }
+
                 // Register YouTube shortcode component for DECAP CMS markdown editor
                 CMS.registerEditorComponent({
                     // Unique identifier for this component
@@ -32,13 +39,13 @@
                     // Form fields shown when user clicks the YouTube button
                     fields: [{ name: 'id', label: 'YouTube Video ID', widget: 'string', hint: 'Video ID or full URL' }],
                     // Regex to detect existing YouTube shortcodes in markdown
-                    pattern: /(?<=(?:v=|vi=|v%3D|embed\/|v\/|e\/|youtu\.be\/|\/u\/\d+\/))[a-zA-Z0-9_-]{11}/,
+                    pattern: /^{{<\s*youtube\s+"?([a-zA-Z0-9_-]{11})"?\s*>}}\s*$/,
                     // Extract video ID from existing shortcode when editing
                     fromBlock: match => ({ id: match[1] }),
                     // Generate Hugo shortcode from form data
-                    toBlock: obj => `{{< youtube ${obj.id} >}}`,
+                    toBlock: obj => `{{< youtube ${getYouTubeID(obj.id)} >}}`,
                     // Show YouTube video preview in the editor
-                    toPreview: obj => `<div class="relative pb-[56.25%] bg-black rounded-lg overflow-hidden"><iframe src="https://youtube.com/embed/${obj.id}" class="absolute inset-0 w-full h-full border-0" allowfullscreen></iframe></div>`
+                    toPreview: obj => `<div class="relative pb-[56.25%] bg-black rounded-lg overflow-hidden"><iframe src="https://youtube.com/embed/${getYouTubeID(obj.id)}" class="absolute inset-0 w-full h-full border-0" allowfullscreen></iframe></div>`
                 });
             }
         });
