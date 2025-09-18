@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+/* Define dark mode variant */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Core design tokens */
+  --font-primary: ui-sans-serif, system-ui, sans-serif;
+  --radius-base: 0.25rem;
+  --radius-lg: 0.5rem;
+  --transition-standard: 200ms;
+  --transition-long: 300ms;
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Brand colors - Light mode */
+  --color-primary-light: 28 100 242;
+  --color-secondary-light: 249 115 22;
+  --color-bg-light: 255 255 255;
+  --color-text-light: 31 41 55;
+
+  /* Brand colors - Dark mode */
+  --color-primary-dark: 59 130 246;
+  --color-secondary-dark: 251 146 60;
+  --color-bg-dark: 17 24 39;
+  --color-text-dark: 243 244 246;
+
+  /* Default theme colors */
+  --color-primary: var(--color-primary-light);
+  --color-secondary: var(--color-secondary-light);
+  --color-bg: var(--color-bg-light);
+  --color-text: var(--color-text-light);
+
+  /* Logo filters */
+  --filter-logo-normal: brightness(0) saturate(100%) invert(11%) sepia(88%)
+    saturate(2836%) hue-rotate(216deg);
+  --filter-logo-hover: brightness(0) saturate(100%) invert(65%) sepia(86%)
+    saturate(4563%) hue-rotate(360deg);
+  --filter-logo-dark: brightness(0) saturate(100%) invert(59%) sepia(11%)
+    saturate(3000%) hue-rotate(191deg);
+  --filter-logo-dark-hover: brightness(0) saturate(100%) invert(77%) sepia(38%)
+    saturate(845%) hue-rotate(326deg);
+}
+
+@layer base {
+  body {
+    @apply bg-[rgb(var(--color-bg))] text-[rgb(var(--color-text))];
+  }
+}
+
+@layer components {
+  .btn {
+    @apply rounded-[var(--radius-base)] bg-[rgb(var(--color-primary))] px-4 py-2 font-semibold text-[rgb(var(--color-bg))] transition-colors duration-[var(--transition-standard)] hover:bg-[rgb(var(--color-secondary))];
+  }
+
+  .nav-link {
+    @apply text-[rgb(var(--color-primary))] transition-colors duration-[var(--transition-standard)] hover:text-[rgb(var(--color-secondary))];
+  }
+
+  .mobile-nav-link {
+    @apply block rounded-[var(--radius-lg)] px-4 py-2 text-sm text-[rgb(var(--color-primary))] transition-colors duration-[var(--transition-standard)] hover:bg-[rgb(var(--color-primary)_/_0.1)];
+  }
+
+  .logo {
+    @apply h-8 [filter:var(--filter-logo-normal)] transition-all duration-[var(--transition-long)] hover:[filter:var(--filter-logo-hover)] active:scale-110 dark:[filter:var(--filter-logo-dark)] dark:hover:[filter:var(--filter-logo-dark-hover)];
+  }
+}
