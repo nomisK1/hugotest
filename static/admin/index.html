@@ -18,7 +18,6 @@
 <body>
     <!-- CMS mount point -->
     <div id="nc-root"></div>
-
     <!-- YouTube shortcode component - loads after CMS initializes -->
     <script>
         window.addEventListener('load', function () {
@@ -33,7 +32,7 @@
                     // Form fields shown when user clicks the YouTube button
                     fields: [{ name: 'id', label: 'YouTube Video ID', widget: 'string', hint: 'Video ID or full URL' }],
                     // Regex to detect existing YouTube shortcodes in markdown
-                    pattern: /{{< youtube\s+(?<id>[A-Za-z0-9\-]+)\s+>}}/,
+                    pattern: /(?:(?:(?<=[vi])(?:=|%3D)|\/))([A-Za-z0-9_-]{11})[&?\s#%\"]/,
                     // Extract video ID from existing shortcode when editing
                     fromBlock: match => ({ id: match[1] }),
                     // Generate Hugo shortcode from form data
