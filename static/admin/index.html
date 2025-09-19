@@ -29,7 +29,7 @@
             if (typeof CMS !== 'undefined') {
                 // Simple function to extract YouTube video ID
                 function getYouTubeID(input) {
-                    const match = input.match(/(?:(?:(?<=[vi])(?:=|%3D)|\/))([A-Za-z0-9_-]{11})[&?\s#%\"]/);
+                    const match = input.match(/(?:(?:(?<=[vi])(?:=|%3D)|\/))([A-Za-z0-9_-]{11})[&?\s#%\"]?/);
                     return match ? match[1] : input;
                 }
                 // Register YouTube shortcode component for DECAP CMS markdown editor
