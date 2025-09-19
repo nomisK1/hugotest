@@ -1,7 +1,7 @@
 ---
-title: <3 Hugotest
-slug: Hugotest
-date: 2025-09-18T12:24:00.000+02:00
+title: "<3 Hugotest"
+slug: "hugotest"
+date: "2025-09-19T19:01:40+02:00"
 draft: false
 author: testin
 description: a test

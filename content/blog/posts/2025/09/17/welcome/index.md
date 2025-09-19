@@ -1,7 +1,7 @@
 ---
-title: 'Welcome'
+title: "Welcome"
 slug: "welcome"
-date: "2025-09-19T18:10:19+02:00"
+date: "2025-09-17T18:59:18+02:00"
 draft: true
 author: ""
 description: ""
