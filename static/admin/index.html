@@ -1,62 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Content Manager</title>
 
-    <!-- Netlify Identity for authentication -->
+    <!-- Netlify Identity (authentication support) -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
-    <!-- DECAP CMS core script -->
-    <script defer src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-    <!-- Alternative CDN (jsDelivr) - uncomment if unpkg is down -->
-    <!-- <script defer src="https://cdn.jsdelivr.net/npm/decap-cms@^3.0.0/dist/decap-cms.js"></script> -->
+    <!-- DECAP CMS (core script with CDN fallback) -->
+    <script defer src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"
+        onerror="this.onerror=null; this.src='https://cdn.jsdelivr.net/npm/decap-cms@^3.0.0/dist/decap-cms.js';">
+        </script>
 
-    <!-- Custom admin styles -->
-    <link rel="stylesheet" href="admin.css">
+    <!-- Custom admin panel styles -->
+    <link rel="stylesheet" href="admin.css" />
 </head>
 
 <body>
-    <!-- CMS mount point -->
+    <!-- DECAP CMS mount point -->
     <div id="nc-root"></div>
 
-    <!-- YouTube shortcode component -->
-    <script>
-        window.addEventListener('DOMContentLoaded', function () {
-            if (typeof CMS !== 'undefined') {
-                // Extract YouTube video ID with URL support
-                function getYouTubeID(input) {
-                    if (!input || typeof input !== 'string') return null;
-                    const cleanInput = input.trim();
-                    if (/^[A-Za-z0-9_-]{11}$/.test(cleanInput)) {
-                        return cleanInput;
-                    }
-                    const match = cleanInput.match(/(?:[vi]=|vi\/|\/|%3D)([A-Za-z0-9_-]{11})(?:[&?\s#%"]|$)/);
-                    return match ? match[1] : null;
-                }
-                // Register YouTube shortcode component for DECAP CMS markdown editor
-                CMS.registerEditorComponent({
-                    id: "youtube",
-                    label: "YouTube",
-                    fields: [{ name: 'id', label: 'YouTube Video ID', widget: 'string', hint: 'Video ID or full URL' }],
-                    pattern: /{{<\s*youtube\s*([a-zA-Z0-9_-]{11})\s*>}}/,
-                    fromBlock: match => ({ id: match[1] }),
-                    toBlock: obj => {
-                        const id = getYouTubeID(obj.id);
-                        return id ? `{{< youtube ${id} >}}` : `<!-- Invalid YouTube ID -->`;
-                    },
-                    toPreview: obj => {
-                        const id = getYouTubeID(obj.id);
-                        return id ? `<div class="relative pb-[56.25%] bg-black rounded-lg overflow-hidden"><iframe title="YouTube Video Preview" src="https://youtube.com/embed/${id}" class="absolute inset-0 w-full h-full border-0" allowfullscreen></iframe></div>` : `<div class="bg-red-100 p-4 rounded">Invalid YouTube ID or URL. Please check and try again.</div>`;
-                    }
-                });
-            } else {
-                console.error('Decap CMS not loaded');
-            }
-        });
-    </script>
+    <!-- Custom admin panel scripts -->
+    <script type="module" src="./admin.js"></script>
 </body>
 
 </html>
