@@ -12,6 +12,7 @@ type: blog
 layout: single
 thumbnail: hugotest.png
 ---
+
 [Download test.txt](/static/media/test.txt)
 
 [testfile](../test.txt)
@@ -23,7 +24,3 @@ thumbnail: hugotest.png
 <!-- Display thumbnail at the bottom -->
 
 ![Thumbnail1](../hugotest.png "alt")
-
-![Thumbnail2](hugotest.png "alt")
-
-{{< youtube https://www.youtube.com/watch?v=dQw4w9WgXcQ >}}
