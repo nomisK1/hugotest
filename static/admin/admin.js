@@ -40,7 +40,7 @@ if (typeof CMS !== "undefined") {
     ],
 
     // Detect shortcode in markdown: {{< youtube VIDEOID >}}
-    pattern: /{{<\s*youtube\s*([a-zA-Z0-9_-]{11})\s*>}}/,
+    pattern: /{{<\s*youtube\s+([a-zA-Z0-9_-]{11})\s*>}}/,
 
     // Convert regex match into structured data
     fromBlock: (match) => ({ id: match[1] }),
