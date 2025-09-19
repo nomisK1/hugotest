@@ -22,3 +22,5 @@ echo "✅ Blog post created:"
 echo "Title: $TITLE"
 echo "Slug: $SLUG"
 echo "Path: $FOLDER/index.md"
+
+# bin/newblogpost.sh "My First Post"
