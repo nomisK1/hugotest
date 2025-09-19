@@ -1,11 +1,13 @@
 ---
-title: "Welcome"
-description: ""
-date: "2025-09-17T10:59:58+02:00"
-draft: false
+title: 'Welcome'
+slug: "welcome"
+date: "2025-09-19T18:10:19+02:00"
+draft: true
 author: ""
+description: ""
 tags: []
 categories: []
+thumbnail: ""
 type: "blog"
 layout: "single"
 ---

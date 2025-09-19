@@ -1,5 +1,6 @@
 ---
-title: '{{ replace .File.ContentBaseName "-" " " | title }}'
+title: '{{ replace .Name "-" " " | title }}'
+slug: "{{ .Name }}"
 description: ""
 type: "page"
 layout: "all"
