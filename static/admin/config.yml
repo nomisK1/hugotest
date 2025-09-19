@@ -14,7 +14,7 @@ site_url: https://hugotestin.netlify.app/
 display_url: https://hugotestin.netlify.app/
 
 media_folder: static/media
-public_folder: /media
+public_folder: https://hugotestin.netlify.app/media
 
 logo_url: /svg/logo.svg
 publish_mode: simple
