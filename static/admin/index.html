@@ -29,8 +29,16 @@
             if (typeof CMS !== 'undefined') {
                 // Simple function to extract YouTube video ID
                 function getYouTubeID(input) {
-                    const match = input.match(/(?<=(?:v=|vi=|v%3D|embed\/|v\/|e\/|youtu\.be\/|\/u\/\d+\/))[a-zA-Z0-9_-]{11}/);
-                    return match ? match[0] : input;
+                    if (!input || typeof input !== 'string') return "error1";
+                    // Clean the input
+                    const cleanInput = input.trim();
+                    // Check if it's already a valid 11-character video ID
+                    if (/^[A-Za-z0-9_-]{11}$/.test(cleanInput)) {
+                        return cleanInput;
+                    }
+                    // Comprehensive regex for YouTube URL formats
+                    const match = cleanInput.match(/(?:(?:(?<=[vi])(?:=|%3D)|\/))([A-Za-z0-9_-]{11})[&?\s#%\"]/);
+                    return match ? match[1] : "error2";
                 }
                 // Register YouTube shortcode component for DECAP CMS markdown editor
                 CMS.registerEditorComponent({
