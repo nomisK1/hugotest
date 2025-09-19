@@ -37,6 +37,13 @@ collections:
           default: "{{now}}",
         }
       - { label: "Draft", name: "draft", widget: "boolean", default: true }
+      - {
+          label: "Featured Image",
+          name: "thumbnail",
+          widget: "image",
+          max_file_size: 5242880,
+          required: false,
+        }
       - { label: "Author", name: "author", widget: "string", required: false }
       - {
           label: "Description",
@@ -50,13 +57,6 @@ collections:
           name: "categories",
           widget: "list",
           default: ["general"],
-        }
-      - {
-          label: "Featured Image",
-          name: "thumbnail",
-          widget: "image",
-          max_file_size: 5242880,
-          required: false,
         }
       - { label: "Type", name: "type", widget: "hidden", default: "blog" }
       - { label: "Layout", name: "layout", widget: "hidden", default: "single" }
