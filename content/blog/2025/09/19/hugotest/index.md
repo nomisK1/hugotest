@@ -8,16 +8,14 @@ type: blog
 layout: single
 slug: hugotest
 title: <3 Hugotest
-date: 2025-09-19T19:48:00.000+02:00
+date: 2025-09-19T21:57:00.000+02:00
 tags:
   - new
 thumbnail: hugotest.png
 ---
-
 {{< youtube dQw4w9WgXcQ >}}
 
 [Watch on YouTube](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 
 <!-- Display thumbnail at the bottom -->
-
-![Thumbnail](hugotest.png "alt")
+![alt](https://hugotestin.netlify.app/media/hugotest.png "hugotest")
