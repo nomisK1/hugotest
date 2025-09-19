@@ -23,7 +23,7 @@ collections:
   - name: "blog"
     label: "Blog"
     label_singular: "Post"
-    folder: "content/blog"
+    folder: "media/blog"
     create: true
     slug: "{{slug}}"
     path: "{{year}}/{{month}}/{{day}}/{{slug}}/index.md"
