@@ -37,13 +37,6 @@ collections:
           default: "{{now}}",
         }
       - { label: "Draft", name: "draft", widget: "boolean", default: true }
-      - {
-          label: "Featured Image",
-          name: "thumbnail",
-          widget: "image",
-          max_file_size: 5242880,
-          required: false,
-        }
       - { label: "Author", name: "author", widget: "string", required: false }
       - {
           label: "Description",
@@ -61,3 +54,10 @@ collections:
       - { label: "Type", name: "type", widget: "hidden", default: "blog" }
       - { label: "Layout", name: "layout", widget: "hidden", default: "single" }
       - { label: "Body", name: "body", widget: "markdown" }
+      - {
+          label: "Featured Image",
+          name: "thumbnail",
+          widget: "image",
+          max_file_size: 5242880,
+          required: false,
+        }

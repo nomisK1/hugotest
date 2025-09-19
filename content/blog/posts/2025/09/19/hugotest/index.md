@@ -3,7 +3,6 @@ title: "<3 Hugotest"
 slug: "hugotest"
 date: "2025-09-19T19:01:40+02:00"
 draft: false
-thumbnail: hugotest.png
 author: testin
 description: a test
 tags:
@@ -12,6 +11,7 @@ categories:
   - general
 type: blog
 layout: single
+thumbnail: hugotest.png
 ---
 
 [Download test.txt](/static/media/test.txt)
