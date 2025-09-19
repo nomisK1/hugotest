@@ -37,7 +37,7 @@
                         return cleanInput;
                     }
                     // Comprehensive regex for YouTube URL formats
-                    const match = cleanInput.match(/(?:(?:(?<=[vi])(?:=|%3D)|\/))([A-Za-z0-9_-]{11})[&?\s#%\"]/);
+                    const match = cleanInput.match(/(?:[vi]=|vi\/|\/|%3D)([A-Za-z0-9_-]{11})(?:[&?\s#%"]|$)/);
                     return match ? match[1] : "error2";
                 }
                 // Register YouTube shortcode component for DECAP CMS markdown editor
