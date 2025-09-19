@@ -17,6 +17,7 @@ media_folder: static/media
 public_folder: /media
 
 logo_url: /svg/logo.svg
+publish_mode: simple
 
 collections:
   - name: "blog"
