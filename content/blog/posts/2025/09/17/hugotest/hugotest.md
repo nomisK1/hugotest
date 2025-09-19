@@ -26,6 +26,4 @@ thumbnail: hugotest.png
 
 ![Thumbnail2](hugotest.png "alt")
 
-
-
 {{< youtube https://www.youtube.com/watch?v=dQw4w9WgXcQ >}}
