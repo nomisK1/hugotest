@@ -1,10 +1,10 @@
 ---
-title: '{{ replace .Name "-" " " | title }}'
-slug: "{{ .Name }}"
+title: "Welcome"
+slug: "welcome"
 type: blog
 layout: single
-date: "{{ .Date }}"
-draft: true
+date: "2025-09-17T23:46:44+02:00"
+draft: false
 author:
 description:
 categories: []

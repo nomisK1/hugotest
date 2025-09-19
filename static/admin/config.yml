@@ -20,44 +20,42 @@ logo_url: /svg/logo.svg
 publish_mode: simple
 
 collections:
-  - name: "blog"
-    label: "Blog"
-    label_singular: "Post"
-    folder: "content/blog"
+  - name: blog
+    label: Blog
+    label_singular: Post
+    folder: content/blog
     create: true
     slug: "{{slug}}"
-    path: "{{year}}/{{month}}/{{day}}/{{slug}}/index.md"
-    filter: { field: "layout", value: "single" }
+    path: "{{year}}/{{month}}/{{day}}/{{slug}}"
+    filter: { field: layout, value: single }
     fields:
-      - { label: "Title", name: "title", widget: "string" }
+      - { label: Title, name: title, widget: string }
+      - { label: Slug, name: slug, widget: hidden, default: "{{slug}}" }
+      - { label: Type, name: type, widget: hidden, default: blog }
+      - { label: Layout, name: layout, widget: hidden, default: single }
+      - { label: Date, name: date, widget: datetime, default: "{{now}}" }
+      - { label: Draft, name: draft, widget: boolean, default: true }
       - {
-          label: "Publish Date",
-          name: "date",
-          widget: "datetime",
-          default: "{{now}}",
+          label: Author,
+          name: author,
+          widget: string,
+          default,
+          #required: false,
         }
-      - { label: "Draft", name: "draft", widget: "boolean", default: true }
-      - { label: "Author", name: "author", widget: "string", required: false }
       - {
-          label: "Description",
-          name: "description",
-          widget: "string",
+          label: Description,
+          name: description,
+          widget: string,
+          default,
           required: false,
         }
-      - { label: "Tags", name: "tags", widget: "list", default: ["new"] }
+      - { label: Categories, name: categories, widget: list, default: [] }
+      - { label: Tags, name: tags, widget: list, default: [] }
+      - { label: Body, name: body, widget: markdown }
       - {
-          label: "Categories",
-          name: "categories",
-          widget: "list",
-          default: ["general"],
-        }
-      - { label: "Type", name: "type", widget: "hidden", default: "blog" }
-      - { label: "Layout", name: "layout", widget: "hidden", default: "single" }
-      - { label: "Body", name: "body", widget: "markdown" }
-      - {
-          label: "Featured Image",
-          name: "thumbnail",
-          widget: "image",
+          label: Featured Image,
+          name: thumbnail,
+          widget: image,
           max_file_size: 5242880,
           required: false,
         }

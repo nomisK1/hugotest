@@ -1,9 +1,9 @@
 ---
 title: '{{ replace .Name "-" " " | title }}'
 slug: "{{ .Name }}"
-description: ""
-type: "page"
-layout: "all"
+type: page
+layout: all
+description:
 ---
 
 Lorem ipsum dolor sit amet.

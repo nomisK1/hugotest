@@ -1,20 +1,21 @@
 /**
- * Extract the 11-character YouTube video ID from a full URL or raw ID.
+ * Extracts the 11-character YouTube video ID from a full URL or raw ID.
+ * Supports various YouTube URL formats including watch, youtu.be, and embed URLs.
  *
- * @param {string} input - YouTube URL or ID string.
- * @returns {string|null} - The extracted video ID, or null if not found.
+ * @param {string} input - YouTube URL or video ID string
+ * @returns {string|null} - The extracted video ID, or null if invalid
  */
 function getYouTubeID(input) {
   if (!input || typeof input !== "string") return null;
 
   const cleanInput = input.trim();
 
-  // Directly return if input already looks like a valid YouTube ID
+  // Return if input is already a valid YouTube ID
   if (/^[A-Za-z0-9_-]{11}$/.test(cleanInput)) {
     return cleanInput;
   }
 
-  // Try to extract ID from a YouTube URL
+  // Extract ID from YouTube URL using regex pattern
   const match = cleanInput.match(
     /(?:[vi]=|vi\/|\/|%3D)([A-Za-z0-9_-]{11})(?:[&?\s#%"]|$)/
   );
@@ -22,14 +23,17 @@ function getYouTubeID(input) {
   return match ? match[1] : null;
 }
 
-/**
- * Register custom DECAP CMS editor component for YouTube videos.
- * Ensures that the CMS library is available before attempting registration.
- */
+// Initialize CMS component only when CMS library is available
 if (typeof CMS !== "undefined") {
+  // Load Tailwind CSS for preview styling
+  CMS.registerPreviewStyle("/css/build.css");
+
+  // Register YouTube video embed component for content management
   CMS.registerEditorComponent({
     id: "youtube",
     label: "YouTube",
+
+    // Define input field configuration
     fields: [
       {
         name: "id",
@@ -39,22 +43,22 @@ if (typeof CMS !== "undefined") {
       },
     ],
 
-    // Detect shortcode in markdown: {{< youtube VIDEOID >}}
+    // Pattern to detect Hugo shortcode: {{< youtube VIDEOID >}}
     pattern: /{{<\s*youtube\s+([a-zA-Z0-9_-]{11})\s*>}}/,
 
-    // Convert regex match into structured data
+    // Parse shortcode match into component data
     fromBlock: (match) => ({ id: match[1] }),
 
-    // Convert structured data back into shortcode
+    // Generate shortcode from component data
     toBlock: (obj) => `{{< youtube ${getYouTubeID(obj.id)} >}}`,
 
-    // Render YouTube video preview inside the CMS editor
+    // Render responsive YouTube embed preview in CMS editor
     toPreview: (obj) =>
       `<div class="relative pb-[56.25%] bg-black rounded-lg overflow-hidden">
-        <iframe 
-          title="YouTube Video Preview" 
-          src="https://youtube.com/embed/${getYouTubeID(obj.id)}" 
-          class="absolute inset-0 w-full h-full border-0" 
+        <iframe
+          title="YouTube Video Preview"
+          src="https://youtube.com/embed/${getYouTubeID(obj.id)}"
+          class="absolute inset-0 w-full h-full border-0"
           allowfullscreen>
         </iframe>
       </div>`,
