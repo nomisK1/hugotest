@@ -1,14 +1,14 @@
 ---
-title: Hello World
-slug: hello-world
-date: 2025-09-17T18:59:03+02:00
 draft: false
 author: ""
 description: ""
-tags: []
 categories: []
 type: blog
 layout: single
+slug: hello-world
+title: Hello World
+date: 2025-09-19T19:43:00.000+02:00
+tags: []
 thumbnail: ""
 ---
 
