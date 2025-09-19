@@ -24,12 +24,12 @@
 
     <!-- YouTube shortcode component - loads after CMS initializes -->
     <script>
-        window.addEventListener('load', function () {
+        window.addEventListener('DOMContentLoaded', function () {
             // Ensure CMS is loaded before registering components
             if (typeof CMS !== 'undefined') {
                 // Simple function to extract YouTube video ID
                 function getYouTubeID(input) {
-                    if (!input || typeof input !== 'string') return "error1";
+                    if (!input || typeof input !== 'string') return null;
                     // Clean the input
                     const cleanInput = input.trim();
                     // Check if it's already a valid 11-character video ID
@@ -38,7 +38,7 @@
                     }
                     // Comprehensive regex for YouTube URL formats
                     const match = cleanInput.match(/(?:[vi]=|vi\/|\/|%3D)([A-Za-z0-9_-]{11})(?:[&?\s#%"]|$)/);
-                    return match ? match[1] : "error2";
+                    return match ? match[1] : null;
                 }
                 // Register YouTube shortcode component for DECAP CMS markdown editor
                 CMS.registerEditorComponent({
@@ -49,14 +49,22 @@
                     // Form fields shown when user clicks the YouTube button
                     fields: [{ name: 'id', label: 'YouTube Video ID', widget: 'string', hint: 'Video ID or full URL' }],
                     // Regex to detect existing YouTube shortcodes in markdown
-                    pattern: /^{{<\s*youtube\s+([a-zA-Z0-9_-]{11})\s*>}}\s*$/,
+                    pattern: /{{<\s*youtube\s*([a-zA-Z0-9_-]{11})\s*>}}/,
                     // Extract video ID from existing shortcode when editing
                     fromBlock: match => ({ id: match[1] }),
                     // Generate Hugo shortcode from form data
-                    toBlock: obj => `{{< youtube ${getYouTubeID(obj.id)} >}}`,
+                    toBlock: obj => {
+                        const id = getYouTubeID(obj.id);
+                        return id ? `{{< youtube ${id} >}}` : `<!-- Invalid YouTube ID -->`;
+                    },
                     // Show YouTube video preview in the editor
-                    toPreview: obj => `<div class="relative pb-[56.25%] bg-black rounded-lg overflow-hidden"><iframe src="https://youtube.com/embed/${getYouTubeID(obj.id)}" class="absolute inset-0 w-full h-full border-0" allowfullscreen></iframe></div>`
+                    toPreview: obj => {
+                        const id = getYouTubeID(obj.id);
+                        return id ? `<div class="relative pb-[56.25%] bg-black rounded-lg overflow-hidden"><iframe title="YouTube Video Preview" src="https://youtube.com/embed/${id}" class="absolute inset-0 w-full h-full border-0" allowfullscreen></iframe></div>` : `<div class="bg-red-100 p-4 rounded">Invalid YouTube ID or URL. Please check and try again.</div>`;
+                    }
                 });
+            } else {
+                console.error('Decap CMS not loaded');
             }
         });
     </script>
