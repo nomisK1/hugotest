@@ -8,7 +8,7 @@ type: blog
 layout: single
 slug: hugotest
 title: <3 Hugotest
-date: 2025-09-19T19:01:40+02:00
+date: 2025-09-19T19:38:00.000+02:00
 tags:
   - new
 thumbnail: hugotest.png
@@ -22,4 +22,4 @@ thumbnail: hugotest.png
 
 
 <!-- Display thumbnail at the bottom -->
-![Thumbnai](hugotest.png "alt")
+![Thumbnail](hugotest.png "alt")
