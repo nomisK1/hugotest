@@ -22,42 +22,31 @@
     <!-- CMS mount point -->
     <div id="nc-root"></div>
 
-    <!-- YouTube shortcode component - loads after CMS initializes -->
+    <!-- YouTube shortcode component -->
     <script>
         window.addEventListener('DOMContentLoaded', function () {
-            // Ensure CMS is loaded before registering components
             if (typeof CMS !== 'undefined') {
-                // Simple function to extract YouTube video ID
+                // Extract YouTube video ID with URL support
                 function getYouTubeID(input) {
                     if (!input || typeof input !== 'string') return null;
-                    // Clean the input
                     const cleanInput = input.trim();
-                    // Check if it's already a valid 11-character video ID
                     if (/^[A-Za-z0-9_-]{11}$/.test(cleanInput)) {
                         return cleanInput;
                     }
-                    // Comprehensive regex for YouTube URL formats
                     const match = cleanInput.match(/(?:[vi]=|vi\/|\/|%3D)([A-Za-z0-9_-]{11})(?:[&?\s#%"]|$)/);
                     return match ? match[1] : null;
                 }
                 // Register YouTube shortcode component for DECAP CMS markdown editor
                 CMS.registerEditorComponent({
-                    // Unique identifier for this component
                     id: "youtube",
-                    // Button label in the editor toolbar
                     label: "YouTube",
-                    // Form fields shown when user clicks the YouTube button
                     fields: [{ name: 'id', label: 'YouTube Video ID', widget: 'string', hint: 'Video ID or full URL' }],
-                    // Regex to detect existing YouTube shortcodes in markdown
                     pattern: /{{<\s*youtube\s*([a-zA-Z0-9_-]{11})\s*>}}/,
-                    // Extract video ID from existing shortcode when editing
                     fromBlock: match => ({ id: match[1] }),
-                    // Generate Hugo shortcode from form data
                     toBlock: obj => {
                         const id = getYouTubeID(obj.id);
                         return id ? `{{< youtube ${id} >}}` : `<!-- Invalid YouTube ID -->`;
                     },
-                    // Show YouTube video preview in the editor
                     toPreview: obj => {
                         const id = getYouTubeID(obj.id);
                         return id ? `<div class="relative pb-[56.25%] bg-black rounded-lg overflow-hidden"><iframe title="YouTube Video Preview" src="https://youtube.com/embed/${id}" class="absolute inset-0 w-full h-full border-0" allowfullscreen></iframe></div>` : `<div class="bg-red-100 p-4 rounded">Invalid YouTube ID or URL. Please check and try again.</div>`;
