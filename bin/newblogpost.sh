@@ -11,7 +11,7 @@ TITLE="$1"
 SLUG=$(echo "$TITLE" | tr '[:upper:]' '[:lower:]' \
                      | sed -E 's/[^a-z0-9]+/-/g' \
                      | sed -E 's/^-+|-+$//g')
-FOLDER="content/blog/posts/$(date +%Y/%m/%d)/$SLUG"
+FOLDER="content/blog/$(date +%Y/%m/%d)/$SLUG"
 
 # Create post and directory
 mkdir -p "$FOLDER"
