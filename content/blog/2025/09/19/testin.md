@@ -1,12 +1,12 @@
 ---
-title: "Testin"
-slug: "testin"
+title: Testin
+slug: testin
 type: blog
 layout: single
-date: "2025-09-19T23:54:03+02:00"
+date: 2025-09-20T08:53:00.000+02:00
 draft: false
 author: testin
-description:
+description: test
 categories:
   - general
   - test
