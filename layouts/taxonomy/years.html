@@ -4,7 +4,7 @@
     <ul>
         {{ range .Site.RegularPages.ByDate.Reverse.GroupByDate "2006" }}
         <li>
-            <a href="{{ .Permalink }}">{{ .Key }} ({{ .Count }})</a>
+            <a href="{{ .RelPermalink }}">{{ .Key }} ({{ .Count }})</a>
         </li>
         {{ end }}
     </ul>
