@@ -1,5 +1,5 @@
 ---
-title: "<3 Hugotest"
+title: "<4 Hugotest"
 type: blog
 layout: single
 date: "2025-09-19T23:53:24+02:00"

@@ -11,10 +11,10 @@ TITLE="$1"
 SLUG=$(echo "$TITLE" | tr '[:upper:]' '[:lower:]' \
                      | sed -E 's/[^a-z0-9]+/-/g' \
                      | sed -E 's/^-+|-+$//g')
-FOLDER="content/blog/$(date +%Y/%m/%d)"
+FOLDER="content/blog/$(date +%Y/%m/%d)/$SLUG"
 
 # Create post and directory
 mkdir -p "$FOLDER"
-hugo new --kind blog "$FOLDER/$SLUG.md"
+hugo new --kind blog "$FOLDER/index.md"
 
-# bin/newblogpost.sh "My First Post"
+# bin/newblogpost.sh "nameMe-draft"
