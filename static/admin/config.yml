@@ -36,23 +36,23 @@ collections:
       - {
           label: Year,
           name: years,
-          widget: string,
+          widget: datetime,
           default: "{{year}}",
-          hidden: true,
+          hidden: false,
         }
       - {
           label: Month,
           name: months,
-          widget: string,
+          widget: datetime,
           default: "{{month}}",
-          hidden: true,
+          hidden: false,
         }
       - {
           label: Day,
           name: days,
-          widget: string,
+          widget: datetime,
           default: "{{day}}",
-          hidden: true,
+          hidden: false,
         }
       - { label: Draft, name: draft, widget: boolean, default: true }
       - {
