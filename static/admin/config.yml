@@ -26,34 +26,16 @@ collections:
     folder: content/blog
     create: true
     slug: "{{slug}}"
-    path: "{{year}}/{{month}}/{{day}}/{{slug}}/index"
+    path: "{{year}}/{{month}}/{{day}}/{{slug}}/"
     filter: { field: layout, value: single }
     fields:
       - { label: Title, name: title, widget: string }
-      - { label: Type, name: type, default: blog, hidden: true }
-      - { label: Layout, name: layout, default: single, hidden: true }
+      - { label: Type, name: type, widget: hidden, default: blog }
+      - { label: Layout, name: layout, widget: hidden, default: single }
       - { label: Date, name: date, widget: datetime, default: "{{now}}" }
-      - {
-          label: Year,
-          name: years,
-          widget: datetime,
-          default: "{{year}}",
-          hidden: false,
-        }
-      - {
-          label: Month,
-          name: months,
-          widget: datetime,
-          default: "{{month}}",
-          hidden: false,
-        }
-      - {
-          label: Day,
-          name: days,
-          widget: datetime,
-          default: "{{day}}",
-          hidden: false,
-        }
+      - { label: Year, name: years, widget: hidden, default: "2025" }
+      - { label: Month, name: months, widget: hidden, default: "09" }
+      - { label: Day, name: days, widget: hidden, default: "22" }
       - { label: Draft, name: draft, widget: boolean, default: true }
       - {
           label: Author,
