@@ -1,0 +1,12 @@
+{{ define "main" }}
+<main>
+    <h1>All Posts by Month</h1>
+    <ul>
+        {{ range .Data.Terms.Alphabetical }}
+        <li>
+            <a href="{{ .Permalink }}">{{ .Name }} ({{ .Count }})</a>
+        </li>
+        {{ end }}
+    </ul>
+</main>
+{{ end }}

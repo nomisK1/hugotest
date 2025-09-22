@@ -9,6 +9,9 @@ description:
 categories: []
 tags: []
 thumbnail:
+years: 2025
+months: 09
+days: 22
 ---
 
 Lorem ipsum dolor sit amet.
