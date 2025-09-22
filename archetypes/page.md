@@ -1,6 +1,5 @@
 ---
 title: '{{ replace .Name "-" " " | title }}'
-slug: "{{ .Name }}"
 type: page
 layout: all
 description:

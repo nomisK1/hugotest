@@ -30,7 +30,6 @@ collections:
     filter: { field: layout, value: single }
     fields:
       - { label: Title, name: title, widget: string }
-      - { label: Slug, name: slug, widget: hidden, default: "{{slug}}" }
       - { label: Type, name: type, widget: hidden, default: blog }
       - { label: Layout, name: layout, widget: hidden, default: single }
       - { label: Date, name: date, widget: datetime, default: "{{now}}" }
@@ -40,7 +39,7 @@ collections:
           name: author,
           widget: string,
           default,
-          #required: false,
+          required: false,
         }
       - {
           label: Description,

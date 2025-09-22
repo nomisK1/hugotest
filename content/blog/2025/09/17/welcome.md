@@ -1,6 +1,5 @@
 ---
 title: "Welcome"
-slug: "welcome"
 type: blog
 layout: single
 date: "2025-09-17T23:46:44+02:00"

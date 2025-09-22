@@ -1,6 +1,5 @@
 ---
 title: '{{ replace .Name "-" " " | title }}'
-slug: "{{ .Name }}"
 type: blog
 layout: single
 date: "{{ .Date }}"

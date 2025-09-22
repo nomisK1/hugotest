@@ -1,6 +1,5 @@
 ---
 title: "Testin"
-slug: "testin"
 type: blog
 layout: single
 date: "2025-09-19T23:54:03+02:00"

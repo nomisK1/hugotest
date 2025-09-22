@@ -1,6 +1,5 @@
 ---
 title: "<3 Hugotest"
-slug: "hugotest"
 type: blog
 layout: single
 date: "2025-09-19T23:53:24+02:00"
