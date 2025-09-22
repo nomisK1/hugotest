@@ -6,7 +6,8 @@
   "scripts": {
     "build:css": "npx @tailwindcss/cli -i assets/css/app.css -o static/css/build.css",
     "watch:css": "npx @tailwindcss/cli -i assets/css/app.css -o static/css/build.css --watch",
-    "serve": "hugo server --disableFastRender"
+    "serve": "hugo server --disableFastRender",
+    "clean": "node -e \"require('fs').rmSync('public', { recursive: true, force: true })\""
   },
   "repository": {
     "type": "git",

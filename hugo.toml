@@ -4,3 +4,8 @@ title = 'HUGOTEST'
 
 [permalinks]
   blog = "/blog/:year/:month/:day/:slug/"
+
+
+[taxonomies]
+  category = 'categories'
+  tag = 'tags'
