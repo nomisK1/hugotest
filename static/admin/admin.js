@@ -26,7 +26,7 @@ function getYouTubeID(input) {
 // Initialize CMS component only when CMS library is available
 if (typeof CMS !== "undefined") {
   // Load Tailwind CSS for preview styling
-  CMS.registerPreviewStyle("/css/build.css");
+  CMS.registerPreviewStyle("css/build.css");
 
   // Register YouTube video embed component for content management
   CMS.registerEditorComponent({
