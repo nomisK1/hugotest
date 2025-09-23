@@ -6,10 +6,8 @@ const getYouTubeID = (input) => {
   if (!input || typeof input !== "string") return null;
   const clean = input.trim();
   if (!clean) return null;
-
   // Direct ID format: 11 alphanumeric characters with dashes/underscores
   if (/^[A-Za-z0-9_-]{11}$/.test(clean)) return clean;
-
   // Extract from URL patterns
   const match = clean.match(
     /(?:[vi]=|vi\/|\/|%3D)([A-Za-z0-9_-]{11})(?:[&?\s#%"]|$)/
@@ -19,7 +17,7 @@ const getYouTubeID = (input) => {
 
 /**
  * Date field processor for Hugo taxonomy fields
- * Generates year, month, and day fields from a date string
+ * Generates years, months, and days fields from a date string
  */
 const processDateFields = (data, dateStr) => {
   if (!dateStr) return data;
@@ -36,17 +34,10 @@ const processDateFields = (data, dateStr) => {
     days: `${year}/${month}/${day}`,
   };
 
-  // Only update missing fields
-  const updates = Object.entries(fields).reduce((acc, [key, value]) => {
-    if (!data.get(key)) acc[key] = value;
-    return acc;
-  }, {});
-
-  return Object.keys(updates).length > 0
-    ? data.withMutations((map) =>
-        Object.entries(updates).forEach(([k, v]) => map.set(k, v))
-      )
-    : data;
+  // Always update the fields to match the current date
+  return data.withMutations((map) => {
+    Object.entries(fields).forEach(([k, v]) => map.set(k, v));
+  });
 };
 
 /**
