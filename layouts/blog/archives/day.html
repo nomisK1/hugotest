@@ -1,12 +1,13 @@
 {{ define "main" }}
-<main>
-    <h1>Posts from Day {{ .Title }}</h1>
-    <ul>
-        {{ range .Pages }}
-        <li>
-            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-        </li>
-        {{ end }}
-    </ul>
-</main>
+<h1>Posts on {{ .Title }}</h1>
+<ul>
+    {{ range .Pages.GroupByDate "2006-01-02" }}
+    {{ range .Pages }}
+    <li>
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        <span>{{ .Date.Format "15:04" }}</span>
+    </li>
+    {{ end }}
+    {{ end }}
+</ul>
 {{ end }}
