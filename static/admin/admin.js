@@ -1,35 +1,66 @@
 /**
- * Extract the 11-character YouTube video ID from a URL or raw ID.
- *
- * @param {string} input - YouTube URL or video ID
- * @returns {string|null} - Video ID, or null if invalid
+ * YouTube video ID extractor
+ * Supports both raw IDs and various YouTube URL formats
  */
-function getYouTubeID(input) {
+const getYouTubeID = (input) => {
   if (!input || typeof input !== "string") return null;
-  const cleanInput = input.trim();
-  // Return directly if already a valid ID
-  if (/^[A-Za-z0-9_-]{11}$/.test(cleanInput)) {
-    return cleanInput;
-  }
-  // Extract ID from YouTube URL
-  const match = cleanInput.match(
+  const clean = input.trim();
+  if (!clean) return null;
+
+  // Direct ID format: 11 alphanumeric characters with dashes/underscores
+  if (/^[A-Za-z0-9_-]{11}$/.test(clean)) return clean;
+
+  // Extract from URL patterns
+  const match = clean.match(
     /(?:[vi]=|vi\/|\/|%3D)([A-Za-z0-9_-]{11})(?:[&?\s#%"]|$)/
   );
-  return match ? match[1] : null;
-}
+  return match?.[1] || null;
+};
 
 /**
- * Initialize CMS extensions if Decap CMS is available.
+ * Date field processor for Hugo taxonomy fields
+ * Generates year, month, and day fields from a date string
+ */
+const processDateFields = (data, dateStr) => {
+  if (!dateStr) return data;
+  const date = new Date(dateStr);
+  if (isNaN(date.getTime())) return data;
+
+  const year = date.getFullYear();
+  const month = (date.getMonth() + 1).toString().padStart(2, "0");
+  const day = date.getDate().toString().padStart(2, "0");
+
+  const fields = {
+    years: year.toString(),
+    months: `${year}/${month}`,
+    days: `${year}/${month}/${day}`,
+  };
+
+  // Only update missing fields
+  const updates = Object.entries(fields).reduce((acc, [key, value]) => {
+    if (!data.get(key)) acc[key] = value;
+    return acc;
+  }, {});
+
+  return Object.keys(updates).length > 0
+    ? data.withMutations((map) =>
+        Object.entries(updates).forEach(([k, v]) => map.set(k, v))
+      )
+    : data;
+};
+
+/**
+ * Decap CMS Extensions
+ * Initializes YouTube shortcode component and date field automation
  */
 if (typeof CMS !== "undefined") {
-  // Apply Tailwind CSS to preview pane
+  // Load Tailwind styles for preview rendering
   CMS.registerPreviewStyle("/css/build.css");
 
-  // Register Hugo YouTube shortcode editor component
+  // YouTube shortcode editor component
   CMS.registerEditorComponent({
     id: "youtube",
     label: "YouTube",
-    // Input field configuration
     fields: [
       {
         name: "id",
@@ -38,15 +69,11 @@ if (typeof CMS !== "undefined") {
         hint: "Enter a video ID or full URL",
       },
     ],
-    // Detect Hugo shortcode in content
     pattern: /{{<\s*youtube\s+([a-zA-Z0-9_-]{11})\s*>}}/,
-    // Parse shortcode match into component data
     fromBlock: (match) => ({ id: match[1] }),
-    // Generate shortcode from component data
     toBlock: (obj) => `{{< youtube ${getYouTubeID(obj.id)} >}}`,
-    // Render responsive preview in the CMS editor
-    toPreview: (obj) =>
-      `<div class="relative pb-[56.25%] bg-black rounded-lg overflow-hidden">
+    toPreview: (obj) => `
+      <div class="relative pb-[56.25%] bg-black rounded-lg overflow-hidden">
         <iframe
           title="YouTube Video Preview"
           src="https://youtube.com/embed/${getYouTubeID(obj.id)}"
@@ -56,44 +83,21 @@ if (typeof CMS !== "undefined") {
       </div>`,
   });
 
-  // Pre-save hook: populate year, month, and day from date field
+  // Auto-populate date taxonomy fields on post creation
+  CMS.registerEventListener({
+    name: "postCreate",
+    handler: ({ entry }) => {
+      const data = entry.get("data");
+      return data ? processDateFields(data, data.get("date")) : undefined;
+    },
+  });
+
+  // Ensure date taxonomy fields are current before saving
   CMS.registerEventListener({
     name: "preSave",
     handler: ({ entry }) => {
       const data = entry.get("data");
-      if (!data) return;
-
-      const dateStr = data.get("date");
-      if (!dateStr) return;
-
-      const dt = new Date(dateStr);
-      if (isNaN(dt.getTime())) return;
-
-      // Extract date components
-      const year = dt.getFullYear();
-      const month = dt.getMonth() + 1;
-      const day = dt.getDate();
-
-      // Format date values according to Hugo's expectations
-      const yearVal = year.toString();
-      const monthVal = `${yearVal}/${month.toString().padStart(2, "0")}`;
-      const dayVal = `${monthVal}/${day.toString().padStart(2, "0")}`;
-
-      // Collect only the fields that need updating
-      const updates = {};
-      if (!data.get("years")) updates.year = yearVal;
-      if (!data.get("months")) updates.month = monthVal;
-      if (!data.get("days")) updates.day = dayVal;
-
-      // Skip processing if no updates are required
-      if (Object.keys(updates).length === 0) return;
-
-      // Apply all updates in a single batch operation
-      return data.withMutations((map) => {
-        Object.entries(updates).forEach(([key, value]) => {
-          map.set(key, value);
-        });
-      });
+      return data ? processDateFields(data, data.get("date")) : undefined;
     },
   });
 }
