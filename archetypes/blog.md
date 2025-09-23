@@ -7,11 +7,11 @@ years: '{{ dateFormat "2006" .Date }}'
 months: '{{ dateFormat "2006/01" .Date }}'
 days: '{{ dateFormat "2006/01/02" .Date }}'
 draft: true
-author:
-description:
+author: null
+description: null
 categories: []
 tags: []
-thumbnail:
+thumbnail: null
 ---
 
 Lorem ipsum dolor sit amet.
