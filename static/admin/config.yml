@@ -3,9 +3,9 @@ backend:
   repo: nomisK1/hugotest
   branch: master
   commit_messages:
-    create: "Post: Create {{collection}} {{slug}}"
-    update: "Post: Update {{collection}} {{slug}}"
-    delete: "Post: Delete {{collection}} {{slug}}"
+    create: "Blog: Create {{collection}} {{slug}}"
+    update: "Blog: Update {{collection}} {{slug}}"
+    delete: "Blog: Delete {{collection}} {{slug}}"
     uploadMedia: "Media: Upload {{path}}"
     deleteMedia: "Media: Delete {{path}}"
     openAuthoring: "{{message}}"
