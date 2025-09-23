@@ -6,5 +6,6 @@
         {{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title
         }}{{ end }}
     </title>
-    <link rel="stylesheet" href="/css/build.css" />
+    {{ partial "base/scripts.html" . }}
+    <link rel="stylesheet" href="/static/css/build.css" />
 </head>

@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "clean": "node -e \"require('fs').rmSync('public', { recursive: true, force: true })\"",
     "build:css": "npx @tailwindcss/cli -i assets/css/app.css -o static/css/build.css",
     "watch:css": "npx @tailwindcss/cli -i assets/css/app.css -o static/css/build.css --watch",
-    "serve": "hugo server --disableFastRender",
-    "clean": "node -e \"require('fs').rmSync('public', { recursive: true, force: true })\""
+    "serve": "hugo server --disableFastRender"
   },
   "repository": {
     "type": "git",
