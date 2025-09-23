@@ -16,10 +16,10 @@ const getYouTubeID = (input) => {
 };
 
 /**
- * Date field processor for Hugo taxonomy fields
- * Generates years, months, and days fields from a date string
+ * Process date and auto-populate taxonomy fields
  */
-const processDateFields = (data, dateStr) => {
+const processDateTaxonomy = (data) => {
+  const dateStr = data.get("date");
   if (!dateStr) return data;
 
   const date = new Date(dateStr);
@@ -29,24 +29,16 @@ const processDateFields = (data, dateStr) => {
   const month = (date.getMonth() + 1).toString().padStart(2, "0");
   const day = date.getDate().toString().padStart(2, "0");
 
-  const fields = {
-    years: year.toString(),
-    months: `${year}/${month}`,
-    days: `${year}/${month}/${day}`,
-  };
+  console.log(`Auto-populating date fields: ${year}/${month}/${day}`);
 
-  // Create a new data object with updated fields
-  let updatedData = data;
-  Object.entries(fields).forEach(([key, value]) => {
-    updatedData = updatedData.set(key, value);
-  });
-
-  return updatedData;
+  return data
+    .set("years", year.toString())
+    .set("months", `${year}/${month}`)
+    .set("days", `${year}/${month}/${day}`);
 };
 
 /**
  * Decap CMS Extensions
- * Initializes YouTube shortcode component and date field automation
  */
 if (typeof CMS !== "undefined") {
   // Load Tailwind styles for preview rendering
@@ -78,60 +70,29 @@ if (typeof CMS !== "undefined") {
       </div>`,
   });
 
-  // Auto-populate date taxonomy fields on entry change
-  CMS.registerEventListener({
-    name: "postSave",
-    handler: ({ entry }) => {
-      const data = entry.get("data");
-      if (!data) return;
-
-      const dateValue = data.get("date");
-      if (!dateValue) return;
-
-      console.log("Processing date fields for:", dateValue);
-      const updatedData = processDateFields(data, dateValue);
-
-      // Return the updated entry
-      return entry.set("data", updatedData);
-    },
-  });
-
-  // Also handle it during the editing process
-  CMS.registerEventListener({
-    name: "prePublish",
-    handler: ({ entry }) => {
-      const data = entry.get("data");
-      if (!data) return entry;
-
-      const dateValue = data.get("date");
-      if (!dateValue) return entry;
-
-      console.log("Pre-publish: Processing date fields for:", dateValue);
-      const updatedData = processDateFields(data, dateValue);
-
-      // Return the updated entry
-      return entry.set("data", updatedData);
-    },
-  });
-
-  // Alternative approach: Use a custom widget hook
+  // Auto-populate date taxonomy fields before saving
   CMS.registerEventListener({
     name: "preSave",
     handler: ({ entry }) => {
       const data = entry.get("data");
-      if (!data) return entry;
+      if (!data) return data;
 
-      const dateValue = data.get("date");
-      if (!dateValue) return entry;
-
-      console.log("Pre-save: Processing date fields for:", dateValue);
-      const updatedData = processDateFields(data, dateValue);
-
-      // Return the updated entry
-      return entry.set("data", updatedData);
+      // Process and return the updated data (not the entry!)
+      return processDateTaxonomy(data);
     },
   });
 
-  // Debug helper - log when CMS is ready
-  console.log("Decap CMS extensions loaded successfully");
+  // Also do it before publishing to ensure consistency
+  CMS.registerEventListener({
+    name: "prePublish",
+    handler: ({ entry }) => {
+      const data = entry.get("data");
+      if (!data) return data;
+
+      // Process and return the updated data (not the entry!)
+      return processDateTaxonomy(data);
+    },
+  });
+
+  console.log("Decap CMS extensions loaded with date auto-population");
 }
