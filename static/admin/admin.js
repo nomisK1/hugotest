@@ -21,6 +21,7 @@ const getYouTubeID = (input) => {
  */
 const processDateFields = (data, dateStr) => {
   if (!dateStr) return data;
+
   const date = new Date(dateStr);
   if (isNaN(date.getTime())) return data;
 
@@ -34,10 +35,13 @@ const processDateFields = (data, dateStr) => {
     days: `${year}/${month}/${day}`,
   };
 
-  // Always update the fields to match the current date
-  return data.withMutations((map) => {
-    Object.entries(fields).forEach(([k, v]) => map.set(k, v));
+  // Create a new data object with updated fields
+  let updatedData = data;
+  Object.entries(fields).forEach(([key, value]) => {
+    updatedData = updatedData.set(key, value);
   });
+
+  return updatedData;
 };
 
 /**
@@ -74,21 +78,60 @@ if (typeof CMS !== "undefined") {
       </div>`,
   });
 
-  // Auto-populate date taxonomy fields before publishing
+  // Auto-populate date taxonomy fields on entry change
+  CMS.registerEventListener({
+    name: "postSave",
+    handler: ({ entry }) => {
+      const data = entry.get("data");
+      if (!data) return;
+
+      const dateValue = data.get("date");
+      if (!dateValue) return;
+
+      console.log("Processing date fields for:", dateValue);
+      const updatedData = processDateFields(data, dateValue);
+
+      // Return the updated entry
+      return entry.set("data", updatedData);
+    },
+  });
+
+  // Also handle it during the editing process
   CMS.registerEventListener({
     name: "prePublish",
     handler: ({ entry }) => {
       const data = entry.get("data");
-      return data ? processDateFields(data, data.get("date")) : undefined;
+      if (!data) return entry;
+
+      const dateValue = data.get("date");
+      if (!dateValue) return entry;
+
+      console.log("Pre-publish: Processing date fields for:", dateValue);
+      const updatedData = processDateFields(data, dateValue);
+
+      // Return the updated entry
+      return entry.set("data", updatedData);
     },
   });
 
-  // Auto-populate date taxonomy fields before saving
+  // Alternative approach: Use a custom widget hook
   CMS.registerEventListener({
     name: "preSave",
     handler: ({ entry }) => {
       const data = entry.get("data");
-      return data ? processDateFields(data, data.get("date")) : undefined;
+      if (!data) return entry;
+
+      const dateValue = data.get("date");
+      if (!dateValue) return entry;
+
+      console.log("Pre-save: Processing date fields for:", dateValue);
+      const updatedData = processDateFields(data, dateValue);
+
+      // Return the updated entry
+      return entry.set("data", updatedData);
     },
   });
+
+  // Debug helper - log when CMS is ready
+  console.log("Decap CMS extensions loaded successfully");
 }
