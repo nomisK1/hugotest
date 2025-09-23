@@ -74,16 +74,16 @@ if (typeof CMS !== "undefined") {
       </div>`,
   });
 
-  // Auto-populate date taxonomy fields on post creation
+  // Auto-populate date taxonomy fields before publishing
   CMS.registerEventListener({
-    name: "postCreate",
+    name: "prePublish",
     handler: ({ entry }) => {
       const data = entry.get("data");
       return data ? processDateFields(data, data.get("date")) : undefined;
     },
   });
 
-  // Ensure date taxonomy fields are current before saving
+  // Auto-populate date taxonomy fields before saving
   CMS.registerEventListener({
     name: "preSave",
     handler: ({ entry }) => {
