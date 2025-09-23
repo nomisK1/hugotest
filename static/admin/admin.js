@@ -67,7 +67,7 @@ const processDateTaxonomy = (data) => {
 
   // Update taxonomy fields using Hugo's hierarchical format
   return data
-    .set("years", `${year.toString()}`)
+    .set("years", year.toString())
     .set("months", `${year}/${month}`)
     .set("days", `${year}/${month}/${day}`);
 };
