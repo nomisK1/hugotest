@@ -4,9 +4,9 @@ title = 'HUGOTEST'
 
 [permalinks]
   blog = "/blog/:year/:month/:day/:slug/"
-  years = "/blog/:year/"
-  months = "/blog/:year/:month/"
-  days = "/blog/:year/:month/:day/"
+  years  = "/blog/:slug/"
+  months = "/blog/:slug/"
+  days   = "/blog/:slug/"
 
 [taxonomies]
   category = 'categories'

@@ -76,8 +76,8 @@ if (typeof CMS !== "undefined") {
 
       // Format date values according to Hugo's expectations
       const yearVal = year.toString();
-      const monthVal = `${month.toString().padStart(2, "0")}`;
-      const dayVal = `${day.toString().padStart(2, "0")}`;
+      const monthVal = `${yearVal}/${month.toString().padStart(2, "0")}`;
+      const dayVal = `${monthVal}/${day.toString().padStart(2, "0")}`;
 
       // Collect only the fields that need updating
       const updates = {};

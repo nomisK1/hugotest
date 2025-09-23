@@ -2,7 +2,10 @@
 title: Testin
 type: blog
 layout: single
-date: 2025-09-20T08:53:00.000+02:00
+date: 2024-09-20T08:53:00.000+02:00
+years: 2024
+months: 2024/09
+days: 2024/09/20
 draft: false
 author: testin
 description: test
