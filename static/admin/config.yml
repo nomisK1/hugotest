@@ -33,6 +33,9 @@ collections:
       - { label: Type, name: type, widget: hidden, default: blog }
       - { label: Layout, name: layout, widget: hidden, default: single }
       - { label: Date, name: date, widget: datetime, default: "{{now}}" }
+      - { label: Year, name: years, widget: hidden, default: "{{year}}" }
+      - { label: Month, name: months, widget: hidden, default: "{{month}}" }
+      - { label: Day, name: days, widget: hidden, default: "{{day}}" }
       - { label: Draft, name: draft, widget: boolean, default: true }
       - {
           label: Author,

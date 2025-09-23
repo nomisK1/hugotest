@@ -4,7 +4,13 @@ title = 'HUGOTEST'
 
 [permalinks]
   blog = "/blog/:year/:month/:day/:slug/"
+  years = "/blog/:year/"
+  months = "/blog/:year/:month/"
+  days = "/blog/:year/:month/:day/"
 
 [taxonomies]
   category = 'categories'
   tag = 'tags'
+  year = "years"
+  month = "months"
+  day = "days"

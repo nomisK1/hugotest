@@ -1,8 +1,8 @@
 ---
 title: "My Blog"
-description: "My personal blog"
 type: "blog"
 layout: "list"
+description: "My personal blog"
 ---
 
 Here you can find all my blog posts.
