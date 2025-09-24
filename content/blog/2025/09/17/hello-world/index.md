@@ -7,11 +7,11 @@ years: 2023
 months: 2023/10
 days: 2023/10/14
 draft: false
-author:
-description:
+author: null
+description: null
 categories: []
 tags: []
-thumbnail:
+thumbnail: null
 ---
 
 Lorem ipsum dolor sit amet.

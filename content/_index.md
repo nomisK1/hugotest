@@ -1,6 +1,6 @@
 ---
 title: "Welcome to My Minimalist Site"
-type: ""
+type: null
 layout: "home"
 description: "Homepage"
 ---
