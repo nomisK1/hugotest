@@ -12,9 +12,15 @@ SLUG=$(echo "$TITLE" | tr '[:upper:]' '[:lower:]' \
                      | sed -E 's/[^a-z0-9]+/-/g' \
                      | sed -E 's/^-+|-+$//g')
 FOLDER="content/blog/$(date +%Y/%m/%d)/$SLUG"
+FILE_PATH="$FOLDER/index.md"
 
 # Create post and directory
 mkdir -p "$FOLDER"
-hugo new --kind blog "$FOLDER/index.md"
+hugo new --kind blog "$FILE_PATH"
+
+# Replace the auto-generated title with our desired title
+sed -i "s/^title: .*/title: \"$TITLE\"/" "$FILE_PATH"
+
+echo "Created: $FILE_PATH with title: $TITLE"
 
 # bin/newblogpost.sh "nameMe-draft"
