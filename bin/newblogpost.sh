@@ -18,7 +18,7 @@ FILE_PATH="$FOLDER/index.md"
 mkdir -p "$FOLDER"
 hugo new --kind blog "$FILE_PATH"
 
-# Replace the auto-generated title with our desired title
+# Replace auto-generated title
 sed -i "s/^title: .*/title: \"$TITLE\"/" "$FILE_PATH"
 
 echo "Created: $FILE_PATH with title: $TITLE"
