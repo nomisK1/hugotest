@@ -1,10 +1,23 @@
 {{ define "main" }}
-<h1>{{ .Title }}</h1>
-<ul>
-    {{ range sort .Pages "Date" "desc" }}
-    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a> — {{ .Date.Format "2006-01-02" }}</li>
-    {{ else }}
-    <li>No posts found</li>
+<h1 class="text-3xl font-bold mb-6">Posts from {{ .Title }}</h1>
+
+{{ $posts := sort .Pages "Date" "desc" }}
+{{ range $posts.GroupByDate "2006-01" }}
+<div class="mb-8">
+    <h2 class="text-xl font-semibold mb-4 text-gray-700">{{ .Key }}</h2>
+
+    {{ range .Pages.GroupByDate "2006-01-02" }}
+    <div class="ml-4 mb-4">
+        <h3 class="text-lg font-medium mb-2 text-gray-600">{{ .Key }}</h3>
+        <ul class="ml-4 space-y-1">
+            {{ range .Pages }}
+            <li><a href="{{ .RelPermalink }}" class="text-blue-600 hover:underline">{{ .Title }}</a></li>
+            {{ end }}
+        </ul>
+    </div>
     {{ end }}
-</ul>
+</div>
+{{ else }}
+<p class="text-gray-500">No posts found for {{ .Title }}</p>
+{{ end }}
 {{ end }}

@@ -1,10 +1,14 @@
 {{ define "main" }}
-<h1>{{ .Title }}</h1>
-<ul>
+<h1 class="text-3xl font-bold mb-6">Posts from {{ .Title }}</h1>
+
+<ul class="space-y-3">
     {{ range sort .Pages "Date" "desc" }}
-    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a> — {{ .Date.Format "2006-01-02" }}</li>
+    <li>
+        <a href="{{ .RelPermalink }}" class="text-blue-600 hover:underline text-lg">{{ .Title }}</a>
+        <span class="text-gray-500 ml-2">{{ .Date.Format "15:04" }}</span>
+    </li>
     {{ else }}
-    <li>No posts found</li>
+    <li class="text-gray-500">No posts found for {{ .Title }}</li>
     {{ end }}
 </ul>
 {{ end }}
