@@ -1,1 +1,351 @@
 @import "tailwindcss";
+
+/* ===================================
+   CUSTOM VARIANTS
+   =================================== */
+@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant theme-blue (&:where(.theme-blue, .theme-blue *));
+@custom-variant theme-green (&:where(.theme-green, .theme-green *));
+@custom-variant theme-purple (&:where(.theme-purple, .theme-purple *));
+
+@theme {
+  /* ===================================
+     SYSTEM DESIGN TOKENS
+     =================================== */
+
+  /* Typography */
+  --font-primary: ui-sans-serif, system-ui, sans-serif;
+  --font-secondary: ui-serif, Georgia, serif;
+  --font-mono: ui-monospace, "SF Mono", Monaco, "Cascadia Code", "Roboto Mono",
+    Consolas, "Courier New", monospace;
+
+  /* Spacing Scale */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+
+  /* Border Radius */
+  --radius-sm: 0.125rem;
+  --radius-base: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 150ms;
+  --transition-standard: 200ms;
+  --transition-slow: 300ms;
+  --transition-slower: 500ms;
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-base: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+  /* ===================================
+     BRAND COLOR PALETTES
+     =================================== */
+
+  /* Default Theme (Blue) - Light */
+  --color-primary-50: 239 246 255;
+  --color-primary-100: 219 234 254;
+  --color-primary-500: 59 130 246;
+  --color-primary-600: 37 99 235;
+  --color-primary-700: 29 78 216;
+  --color-primary-900: 30 58 138;
+
+  --color-secondary-50: 255 247 237;
+  --color-secondary-100: 254 237 213;
+  --color-secondary-500: 249 115 22;
+  --color-secondary-600: 234 88 12;
+  --color-secondary-700: 194 65 12;
+
+  /* Default Theme (Blue) - Dark */
+  --color-primary-dark-50: 30 58 138;
+  --color-primary-dark-100: 29 78 216;
+  --color-primary-dark-500: 96 165 250;
+  --color-primary-dark-600: 59 130 246;
+  --color-primary-dark-700: 37 99 235;
+  --color-primary-dark-900: 239 246 255;
+
+  --color-secondary-dark-50: 194 65 12;
+  --color-secondary-dark-100: 234 88 12;
+  --color-secondary-dark-500: 251 146 60;
+  --color-secondary-dark-600: 249 115 22;
+  --color-secondary-dark-700: 254 237 213;
+
+  /* Green Theme */
+  --color-green-50: 240 253 244;
+  --color-green-100: 220 252 231;
+  --color-green-500: 34 197 94;
+  --color-green-600: 22 163 74;
+  --color-green-700: 21 128 61;
+  --color-green-900: 20 83 45;
+
+  /* Purple Theme */
+  --color-purple-50: 250 245 255;
+  --color-purple-100: 243 232 255;
+  --color-purple-500: 168 85 247;
+  --color-purple-600: 147 51 234;
+  --color-purple-700: 126 34 206;
+  --color-purple-900: 88 28 135;
+
+  /* ===================================
+     SEMANTIC COLOR SYSTEM
+     =================================== */
+
+  /* Surface Colors - Light */
+  --color-bg-primary-light: 255 255 255;
+  --color-bg-secondary-light: 249 250 251;
+  --color-bg-tertiary-light: 243 244 246;
+  --color-bg-accent-light: 239 246 255;
+
+  /* Text Colors - Light */
+  --color-text-primary-light: 17 24 39;
+  --color-text-secondary-light: 75 85 99;
+  --color-text-tertiary-light: 156 163 175;
+  --color-text-inverse-light: 255 255 255;
+
+  /* Border Colors - Light */
+  --color-border-light: 229 231 235;
+  --color-border-strong-light: 209 213 219;
+
+  /* Surface Colors - Dark */
+  --color-bg-primary-dark: 17 24 39;
+  --color-bg-secondary-dark: 31 41 55;
+  --color-bg-tertiary-dark: 55 65 81;
+  --color-bg-accent-dark: 30 58 138;
+
+  /* Text Colors - Dark */
+  --color-text-primary-dark: 243 244 246;
+  --color-text-secondary-dark: 209 213 219;
+  --color-text-tertiary-dark: 156 163 175;
+  --color-text-inverse-dark: 17 24 39;
+
+  /* Border Colors - Dark */
+  --color-border-dark: 75 85 99;
+  --color-border-strong-dark: 107 114 128;
+
+  /* State Colors (Universal) */
+  --color-success: 34 197 94;
+  --color-warning: 245 158 11;
+  --color-error: 239 68 68;
+  --color-info: 59 130 246;
+
+  /* ===================================
+     ACTIVE THEME VARIABLES
+     =================================== */
+
+  /* Default to light theme */
+  --color-brand-primary: var(--color-primary-500);
+  --color-brand-primary-hover: var(--color-primary-600);
+  --color-brand-primary-active: var(--color-primary-700);
+  --color-brand-secondary: var(--color-secondary-500);
+  --color-brand-secondary-hover: var(--color-secondary-600);
+
+  --color-bg-primary: var(--color-bg-primary-light);
+  --color-bg-secondary: var(--color-bg-secondary-light);
+  --color-bg-tertiary: var(--color-bg-tertiary-light);
+  --color-bg-accent: var(--color-bg-accent-light);
+
+  --color-text-primary: var(--color-text-primary-light);
+  --color-text-secondary: var(--color-text-secondary-light);
+  --color-text-tertiary: var(--color-text-tertiary-light);
+  --color-text-inverse: var(--color-text-inverse-light);
+
+  --color-border: var(--color-border-light);
+  --color-border-strong: var(--color-border-strong-light);
+
+  /* ===================================
+     SPECIALIZED FILTERS & EFFECTS
+     =================================== */
+
+  /* Logo Filters */
+  --filter-logo: brightness(0) saturate(100%) invert(11%) sepia(88%)
+    saturate(2836%) hue-rotate(216deg);
+  --filter-logo-hover: brightness(0) saturate(100%) invert(65%) sepia(86%)
+    saturate(4563%) hue-rotate(360deg);
+  --filter-logo-dark: brightness(0) saturate(100%) invert(59%) sepia(11%)
+    saturate(3000%) hue-rotate(191deg);
+  --filter-logo-dark-hover: brightness(0) saturate(100%) invert(77%) sepia(38%)
+    saturate(845%) hue-rotate(326deg);
+
+  /* Backdrop Filters */
+  --backdrop-blur-sm: blur(4px);
+  --backdrop-blur-md: blur(12px);
+  --backdrop-blur-lg: blur(16px);
+}
+
+/* ===================================
+   THEME OVERRIDES
+   =================================== */
+
+/* Dark Mode Overrides */
+@custom-variant dark {
+  :root {
+    --color-brand-primary: var(--color-primary-dark-500);
+    --color-brand-primary-hover: var(--color-primary-dark-600);
+    --color-brand-primary-active: var(--color-primary-dark-700);
+    --color-brand-secondary: var(--color-secondary-dark-500);
+    --color-brand-secondary-hover: var(--color-secondary-dark-600);
+
+    --color-bg-primary: var(--color-bg-primary-dark);
+    --color-bg-secondary: var(--color-bg-secondary-dark);
+    --color-bg-tertiary: var(--color-bg-tertiary-dark);
+    --color-bg-accent: var(--color-bg-accent-dark);
+
+    --color-text-primary: var(--color-text-primary-dark);
+    --color-text-secondary: var(--color-text-secondary-dark);
+    --color-text-tertiary: var(--color-text-tertiary-dark);
+    --color-text-inverse: var(--color-text-inverse-dark);
+
+    --color-border: var(--color-border-dark);
+    --color-border-strong: var(--color-border-strong-dark);
+  }
+}
+
+/* Green Theme Override */
+@custom-variant theme-green {
+  :root {
+    --color-brand-primary: var(--color-green-500);
+    --color-brand-primary-hover: var(--color-green-600);
+    --color-brand-primary-active: var(--color-green-700);
+  }
+}
+
+/* Purple Theme Override */
+@custom-variant theme-purple {
+  :root {
+    --color-brand-primary: var(--color-purple-500);
+    --color-brand-primary-hover: var(--color-purple-600);
+    --color-brand-primary-active: var(--color-purple-700);
+  }
+}
+
+/* ===================================
+   BASE STYLES
+   =================================== */
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-[rgb(var(--color-bg-primary))] text-[rgb(var(--color-text-primary))] font-[var(--font-primary)] antialiased;
+    transition: background-color var(--transition-standard) var(--ease-standard),
+      color var(--transition-standard) var(--ease-standard);
+  }
+
+  /* Focus styles */
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-[rgb(var(--color-brand-primary))];
+  }
+}
+
+/* ===================================
+   COMPONENT LIBRARY
+   =================================== */
+
+@layer components {
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center justify-center rounded-[var(--radius-base)] px-4 py-2 font-semibold transition-all;
+    transition-duration: var(--transition-standard);
+    transition-timing-function: var(--ease-standard);
+  }
+
+  .btn-primary {
+    @apply btn bg-[rgb(var(--color-brand-primary))] text-[rgb(var(--color-text-inverse))] hover:bg-[rgb(var(--color-brand-primary-hover))] active:bg-[rgb(var(--color-brand-primary-active))] active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply btn border border-[rgb(var(--color-border-strong))] bg-[rgb(var(--color-bg-primary))] text-[rgb(var(--color-brand-primary))] hover:bg-[rgb(var(--color-bg-secondary))];
+  }
+
+  .btn-ghost {
+    @apply btn text-[rgb(var(--color-brand-primary))] hover:bg-[rgb(var(--color-brand-primary)_/_0.1)];
+  }
+
+  /* Navigation */
+  .nav-link {
+    @apply text-[rgb(var(--color-brand-primary))] hover:text-[rgb(var(--color-brand-primary-hover))];
+    transition: color var(--transition-standard) var(--ease-standard);
+  }
+
+  .nav-link-active {
+    @apply nav-link font-semibold text-[rgb(var(--color-brand-primary-active))];
+  }
+
+  .mobile-nav-link {
+    @apply block rounded-[var(--radius-md)] px-4 py-2 text-sm text-[rgb(var(--color-text-primary))] hover:bg-[rgb(var(--color-bg-secondary))];
+    transition: background-color var(--transition-standard) var(--ease-standard);
+  }
+
+  /* Cards */
+  .card {
+    @apply rounded-[var(--radius-lg)] bg-[rgb(var(--color-bg-primary))] p-6 shadow-[var(--shadow-base)] transition-shadow;
+    transition-duration: var(--transition-standard);
+  }
+
+  .card-hover {
+    @apply card hover:shadow-[var(--shadow-lg)];
+  }
+
+  /* Forms */
+  .input {
+    @apply rounded-[var(--radius-base)] border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-primary))] px-3 py-2 text-[rgb(var(--color-text-primary))] placeholder-[rgb(var(--color-text-tertiary))] focus:border-[rgb(var(--color-brand-primary))] focus:outline-none focus:ring-1 focus:ring-[rgb(var(--color-brand-primary))];
+    transition: border-color var(--transition-standard) var(--ease-standard);
+  }
+
+  /* Logo */
+  .logo {
+    @apply h-8 transition-all active:scale-110;
+    filter: var(--filter-logo);
+    transition-duration: var(--transition-slow);
+    transition-timing-function: var(--ease-standard);
+  }
+
+  .logo:hover {
+    filter: var(--filter-logo-hover);
+  }
+
+  .dark .logo {
+    filter: var(--filter-logo-dark);
+  }
+
+  .dark .logo:hover {
+    filter: var(--filter-logo-dark-hover);
+  }
+
+  /* Utilities */
+  .surface-primary {
+    @apply bg-[rgb(var(--color-bg-primary))];
+  }
+
+  .surface-secondary {
+    @apply bg-[rgb(var(--color-bg-secondary))];
+  }
+
+  .text-primary {
+    @apply text-[rgb(var(--color-text-primary))];
+  }
+
+  .text-secondary {
+    @apply text-[rgb(var(--color-text-secondary))];
+  }
+
+  .border-default {
+    @apply border-[rgb(var(--color-border))];
+  }
+}
