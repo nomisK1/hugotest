@@ -1,194 +1,206 @@
+/**
+ * ==========================================================================
+ * MAIN STYLESHEET
+ * ==========================================================================
+ *
+ * Welcome to your project's core CSS file!
+ *
+ * This file is built for Tailwind CSS 4 and is designed to be a robust
+ * foundation for your design system. It includes:
+ *
+ * 1.  A comprehensive set of design tokens (CSS variables).
+ * 2.  A flexible theming system for dark mode and multiple color themes.
+ * 3.  A library of common, pre-styled component classes.
+ *
+ * Use this file as a guide and a starting point. All variables and
+ * components are easily customizable to fit your brand.
+ *
+ * HOW TO USE THEMES:
+ * - Dark Mode: Add the `dark` class to your <html> or <body> tag.
+ * - Color Themes: Add `theme-green` or `theme-purple` to your <html> or
+ * <body> tag to override the default blue theme.
+ */
+
 @import "tailwindcss";
 
-/* ===================================
-   CUSTOM VARIANTS
-   =================================== */
-@custom-variant dark (&:where(.dark, .dark *));
-@custom-variant theme-blue (&:where(.theme-blue, .theme-blue *));
-@custom-variant theme-green (&:where(.theme-green, .theme-green *));
-@custom-variant theme-purple (&:where(.theme-purple, .theme-purple *));
+/* ==========================================================================
+   1. CONFIGURATION LAYER (@layer config)
+   ========================================================================== */
 
-@theme {
-  /* ===================================
-     SYSTEM DESIGN TOKENS
-     =================================== */
+@layer config {
+  /*
+  |--------------------------------------------------------------------------
+  | CUSTOM VARIANTS
+  |--------------------------------------------------------------------------
+  |
+  | Define custom variants that can be used to apply styles conditionally.
+  | These are used for our dark mode and color theming system.
+  |
+  */
+  @custom-variant dark (&:where(.dark, .dark *));
+  @custom-variant theme-blue (&:where(.theme-blue, .theme-blue *));
+  @custom-variant theme-green (&:where(.theme-green, .theme-green *));
+  @custom-variant theme-purple (&:where(.theme-purple, .theme-purple *));
 
-  /* Typography */
-  --font-primary: ui-sans-serif, system-ui, sans-serif;
-  --font-secondary: ui-serif, Georgia, serif;
-  --font-mono: ui-monospace, "SF Mono", Monaco, "Cascadia Code", "Roboto Mono",
-    Consolas, "Courier New", monospace;
+  @theme {
+    /*
+    |--------------------------------------------------------------------------
+    | SYSTEM DESIGN TOKENS
+    |--------------------------------------------------------------------------
+    |
+    | These are the fundamental building blocks of your design system.
+    | They are not tied to a specific theme but define the consistent
+    | scales and values used throughout the UI.
+    |
+    */
 
-  /* Spacing Scale */
-  --space-xs: 0.25rem;
-  --space-sm: 0.5rem;
-  --space-md: 1rem;
-  --space-lg: 1.5rem;
-  --space-xl: 2rem;
-  --space-2xl: 3rem;
+    /* Typography */
+    --font-primary: ui-sans-serif, system-ui, sans-serif;
+    --font-secondary: ui-serif, Georgia, serif;
+    --font-mono: ui-monospace, "SF Mono", Monaco, "Cascadia Code", "Roboto Mono",
+      Consolas, "Courier New", monospace;
 
-  /* Border Radius */
-  --radius-sm: 0.125rem;
-  --radius-base: 0.25rem;
-  --radius-md: 0.375rem;
-  --radius-lg: 0.5rem;
-  --radius-xl: 0.75rem;
-  --radius-full: 9999px;
+    /* Spacing Scale (based on a 4px grid) */
+    --space-xs: 0.25rem; /* 4px */
+    --space-sm: 0.5rem; /* 8px */
+    --space-md: 1rem; /* 16px */
+    --space-lg: 1.5rem; /* 24px */
+    --space-xl: 2rem; /* 32px */
+    --space-2xl: 3rem; /* 48px */
 
-  /* Transitions */
-  --transition-fast: 150ms;
-  --transition-standard: 200ms;
-  --transition-slow: 300ms;
-  --transition-slower: 500ms;
-  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
-  --ease-in: cubic-bezier(0.4, 0, 1, 1);
-  --ease-out: cubic-bezier(0, 0, 0.2, 1);
-  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    /* Border Radius */
+    --radius-sm: 0.125rem;
+    --radius-base: 0.25rem;
+    --radius-md: 0.375rem;
+    --radius-lg: 0.5rem;
+    --radius-xl: 0.75rem;
+    --radius-full: 9999px;
 
-  /* Shadows */
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-base: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1),
-    0 4px 6px -4px rgb(0 0 0 / 0.1);
+    /* Transitions & Animations */
+    --transition-fast: 150ms;
+    --transition-standard: 200ms;
+    --transition-slow: 300ms;
+    --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-in: cubic-bezier(0.4, 0, 1, 1);
+    --ease-out: cubic-bezier(0, 0, 0.2, 1);
 
-  /* ===================================
-     BRAND COLOR PALETTES
-     =================================== */
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-base: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1),
+      0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+      0 4px 6px -4px rgb(0 0 0 / 0.1);
 
-  /* Default Theme (Blue) - Light */
-  --color-primary-50: 239 246 255;
-  --color-primary-100: 219 234 254;
-  --color-primary-500: 59 130 246;
-  --color-primary-600: 37 99 235;
-  --color-primary-700: 29 78 216;
-  --color-primary-900: 30 58 138;
+    /*
+    |--------------------------------------------------------------------------
+    | BRAND COLOR PALETTES
+    |--------------------------------------------------------------------------
+    |
+    | Raw color values for each theme. These are not used directly in
+    | components. Instead, they feed into the "Semantic Color System".
+    | Colors are defined as R G B values for use with opacity modifiers.
+    |
+    */
 
-  --color-secondary-50: 255 247 237;
-  --color-secondary-100: 254 237 213;
-  --color-secondary-500: 249 115 22;
-  --color-secondary-600: 234 88 12;
-  --color-secondary-700: 194 65 12;
+    /* Default Theme (Blue) - Light */
+    --color-primary-50: 239 246 255;
+    --color-primary-100: 219 234 254;
+    --color-primary-500: 59 130 246;
+    --color-primary-600: 37 99 235;
+    --color-primary-700: 29 78 216;
 
-  /* Default Theme (Blue) - Dark */
-  --color-primary-dark-50: 30 58 138;
-  --color-primary-dark-100: 29 78 216;
-  --color-primary-dark-500: 96 165 250;
-  --color-primary-dark-600: 59 130 246;
-  --color-primary-dark-700: 37 99 235;
-  --color-primary-dark-900: 239 246 255;
+    /* Default Theme (Blue) - Dark */
+    --color-primary-dark-500: 96 165 250;
+    --color-primary-dark-600: 59 130 246;
+    --color-primary-dark-700: 37 99 235;
 
-  --color-secondary-dark-50: 194 65 12;
-  --color-secondary-dark-100: 234 88 12;
-  --color-secondary-dark-500: 251 146 60;
-  --color-secondary-dark-600: 249 115 22;
-  --color-secondary-dark-700: 254 237 213;
+    /* Green Theme */
+    --color-green-500: 34 197 94;
+    --color-green-600: 22 163 74;
+    --color-green-700: 21 128 61;
 
-  /* Green Theme */
-  --color-green-50: 240 253 244;
-  --color-green-100: 220 252 231;
-  --color-green-500: 34 197 94;
-  --color-green-600: 22 163 74;
-  --color-green-700: 21 128 61;
-  --color-green-900: 20 83 45;
+    /* Purple Theme */
+    --color-purple-500: 168 85 247;
+    --color-purple-600: 147 51 234;
+    --color-purple-700: 126 34 206;
 
-  /* Purple Theme */
-  --color-purple-50: 250 245 255;
-  --color-purple-100: 243 232 255;
-  --color-purple-500: 168 85 247;
-  --color-purple-600: 147 51 234;
-  --color-purple-700: 126 34 206;
-  --color-purple-900: 88 28 135;
+    /*
+    |--------------------------------------------------------------------------
+    | SEMANTIC COLOR SYSTEM
+    |--------------------------------------------------------------------------
+    |
+    | These variables give semantic meaning to colors (e.g., "background"
+    | or "text"). The active theme variables below will point to these.
+    |
+    */
 
-  /* ===================================
-     SEMANTIC COLOR SYSTEM
-     =================================== */
+    /* Light Mode Semantic Colors */
+    --color-bg-primary-light: 255 255 255;
+    --color-bg-secondary-light: 249 250 251;
+    --color-text-primary-light: 17 24 39;
+    --color-text-secondary-light: 75 85 99;
+    --color-text-inverse-light: 255 255 255;
+    --color-border-light: 229 231 235;
 
-  /* Surface Colors - Light */
-  --color-bg-primary-light: 255 255 255;
-  --color-bg-secondary-light: 249 250 251;
-  --color-bg-tertiary-light: 243 244 246;
-  --color-bg-accent-light: 239 246 255;
+    /* Dark Mode Semantic Colors */
+    --color-bg-primary-dark: 17 24 39;
+    --color-bg-secondary-dark: 31 41 55;
+    --color-text-primary-dark: 243 244 246;
+    --color-text-secondary-dark: 209 213 219;
+    --color-text-inverse-dark: 17 24 39;
+    --color-border-dark: 55 65 81;
 
-  /* Text Colors - Light */
-  --color-text-primary-light: 17 24 39;
-  --color-text-secondary-light: 75 85 99;
-  --color-text-tertiary-light: 156 163 175;
-  --color-text-inverse-light: 255 255 255;
+    /* State Colors (Universal) */
+    --color-success: 34 197 94;
+    --color-warning: 245 158 11;
+    --color-error: 239 68 68;
+    --color-info: 59 130 246;
 
-  /* Border Colors - Light */
-  --color-border-light: 229 231 235;
-  --color-border-strong-light: 209 213 219;
+    /*
+    |--------------------------------------------------------------------------
+    | ACTIVE THEME VARIABLES (The Magic Happens Here!)
+    |--------------------------------------------------------------------------
+    |
+    | These are the variables you'll use in your component classes.
+    | By default, they point to the light theme values. The theme
+    | override rules below will change which raw values they point to.
+    |
+    */
+    --color-brand-primary: var(--color-primary-500);
+    --color-brand-primary-hover: var(--color-primary-600);
+    --color-brand-primary-active: var(--color-primary-700);
+    --color-bg-primary: var(--color-bg-primary-light);
+    --color-bg-secondary: var(--color-bg-secondary-light);
+    --color-text-primary: var(--color-text-primary-light);
+    --color-text-secondary: var(--color-text-secondary-light);
+    --color-text-inverse: var(--color-text-inverse-light);
+    --color-border: var(--color-border-light);
 
-  /* Surface Colors - Dark */
-  --color-bg-primary-dark: 17 24 39;
-  --color-bg-secondary-dark: 31 41 55;
-  --color-bg-tertiary-dark: 55 65 81;
-  --color-bg-accent-dark: 30 58 138;
-
-  /* Text Colors - Dark */
-  --color-text-primary-dark: 243 244 246;
-  --color-text-secondary-dark: 209 213 219;
-  --color-text-tertiary-dark: 156 163 175;
-  --color-text-inverse-dark: 17 24 39;
-
-  /* Border Colors - Dark */
-  --color-border-dark: 75 85 99;
-  --color-border-strong-dark: 107 114 128;
-
-  /* State Colors (Universal) */
-  --color-success: 34 197 94;
-  --color-warning: 245 158 11;
-  --color-error: 239 68 68;
-  --color-info: 59 130 246;
-
-  /* ===================================
-     ACTIVE THEME VARIABLES
-     =================================== */
-
-  /* Default to light theme */
-  --color-brand-primary: var(--color-primary-500);
-  --color-brand-primary-hover: var(--color-primary-600);
-  --color-brand-primary-active: var(--color-primary-700);
-  --color-brand-secondary: var(--color-secondary-500);
-  --color-brand-secondary-hover: var(--color-secondary-600);
-
-  --color-bg-primary: var(--color-bg-primary-light);
-  --color-bg-secondary: var(--color-bg-secondary-light);
-  --color-bg-tertiary: var(--color-bg-tertiary-light);
-  --color-bg-accent: var(--color-bg-accent-light);
-
-  --color-text-primary: var(--color-text-primary-light);
-  --color-text-secondary: var(--color-text-secondary-light);
-  --color-text-tertiary: var(--color-text-tertiary-light);
-  --color-text-inverse: var(--color-text-inverse-light);
-
-  --color-border: var(--color-border-light);
-  --color-border-strong: var(--color-border-strong-light);
-
-  /* ===================================
-     SPECIALIZED FILTERS & EFFECTS
-     =================================== */
-
-  /* Logo Filters */
-  --filter-logo: brightness(0) saturate(100%) invert(11%) sepia(88%)
-    saturate(2836%) hue-rotate(216deg);
-  --filter-logo-hover: brightness(0) saturate(100%) invert(65%) sepia(86%)
-    saturate(4563%) hue-rotate(360deg);
-  --filter-logo-dark: brightness(0) saturate(100%) invert(59%) sepia(11%)
-    saturate(3000%) hue-rotate(191deg);
-  --filter-logo-dark-hover: brightness(0) saturate(100%) invert(77%) sepia(38%)
-    saturate(845%) hue-rotate(326deg);
-
-  /* Backdrop Filters */
-  --backdrop-blur-sm: blur(4px);
-  --backdrop-blur-md: blur(12px);
-  --backdrop-blur-lg: blur(16px);
+    /*
+    |--------------------------------------------------------------------------
+    | SPECIALIZED FILTERS & EFFECTS
+    |--------------------------------------------------------------------------
+    |
+    | Custom filters for specific use cases, like theming an SVG logo.
+    | NOTE: These are highly specific and should be adjusted for your logo.
+    |
+    */
+    --filter-logo: brightness(0) saturate(100%) invert(26%) sepia(69%)
+      saturate(4649%) hue-rotate(218deg) brightness(94%) contrast(93%);
+    --filter-logo-hover: brightness(0) saturate(100%) invert(18%) sepia(85%)
+      saturate(2461%) hue-rotate(217deg) brightness(91%) contrast(92%);
+    --filter-logo-dark: brightness(0) saturate(100%) invert(70%) sepia(57%)
+      saturate(492%) hue-rotate(182deg) brightness(99%) contrast(92%);
+    --filter-logo-dark-hover: brightness(0) saturate(100%) invert(60%)
+      sepia(91%) saturate(1476%) hue-rotate(198deg) brightness(97%)
+      contrast(92%);
+  }
 }
 
-/* ===================================
-   THEME OVERRIDES
-   =================================== */
+/* ==========================================================================
+   2. THEME OVERRIDES
+   ========================================================================== */
 
 /* Dark Mode Overrides */
 @custom-variant dark {
@@ -196,21 +208,12 @@
     --color-brand-primary: var(--color-primary-dark-500);
     --color-brand-primary-hover: var(--color-primary-dark-600);
     --color-brand-primary-active: var(--color-primary-dark-700);
-    --color-brand-secondary: var(--color-secondary-dark-500);
-    --color-brand-secondary-hover: var(--color-secondary-dark-600);
-
     --color-bg-primary: var(--color-bg-primary-dark);
     --color-bg-secondary: var(--color-bg-secondary-dark);
-    --color-bg-tertiary: var(--color-bg-tertiary-dark);
-    --color-bg-accent: var(--color-bg-accent-dark);
-
     --color-text-primary: var(--color-text-primary-dark);
     --color-text-secondary: var(--color-text-secondary-dark);
-    --color-text-tertiary: var(--color-text-tertiary-dark);
     --color-text-inverse: var(--color-text-inverse-dark);
-
     --color-border: var(--color-border-dark);
-    --color-border-strong: var(--color-border-strong-dark);
   }
 }
 
@@ -232,9 +235,9 @@
   }
 }
 
-/* ===================================
-   BASE STYLES
-   =================================== */
+/* ==========================================================================
+   3. BASE STYLES (@layer base)
+   ========================================================================== */
 
 @layer base {
   html {
@@ -247,20 +250,43 @@
       color var(--transition-standard) var(--ease-standard);
   }
 
-  /* Focus styles */
+  /* Basic heading styles */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-bold text-[rgb(var(--color-text-primary))];
+  }
+
+  /* Focus outline styles for accessibility */
   *:focus-visible {
     @apply outline-2 outline-offset-2 outline-[rgb(var(--color-brand-primary))];
   }
 }
 
-/* ===================================
-   COMPONENT LIBRARY
-   =================================== */
+/* ==========================================================================
+   4. COMPONENT LIBRARY (@layer components)
+   ========================================================================== */
 
 @layer components {
-  /* Buttons */
+  /*
+  |--------------------------------------------------------------------------
+  | Layout
+  |--------------------------------------------------------------------------
+  */
+  .container {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  /*
+  |--------------------------------------------------------------------------
+  | Buttons
+  |--------------------------------------------------------------------------
+  */
   .btn {
-    @apply inline-flex items-center justify-center rounded-[var(--radius-base)] px-4 py-2 font-semibold transition-all;
+    @apply inline-flex items-center justify-center rounded-[var(--radius-base)] px-4 py-2 text-center font-semibold transition-all;
     transition-duration: var(--transition-standard);
     transition-timing-function: var(--ease-standard);
   }
@@ -270,45 +296,84 @@
   }
 
   .btn-secondary {
-    @apply btn border border-[rgb(var(--color-border-strong))] bg-[rgb(var(--color-bg-primary))] text-[rgb(var(--color-brand-primary))] hover:bg-[rgb(var(--color-bg-secondary))];
+    @apply btn border border-[rgb(var(--color-border))] bg-transparent text-[rgb(var(--color-brand-primary))] hover:bg-[rgb(var(--color-brand-primary)_/_0.1)];
   }
 
   .btn-ghost {
-    @apply btn text-[rgb(var(--color-brand-primary))] hover:bg-[rgb(var(--color-brand-primary)_/_0.1)];
+    @apply btn text-[rgb(var(--color-brand-primary))] hover:bg-[rgb(var(--color-brand-primary)_/_0.1)] active:bg-[rgb(var(--color-brand-primary)_/_0.2)];
   }
 
-  /* Navigation */
-  .nav-link {
-    @apply text-[rgb(var(--color-brand-primary))] hover:text-[rgb(var(--color-brand-primary-hover))];
-    transition: color var(--transition-standard) var(--ease-standard);
-  }
-
-  .nav-link-active {
-    @apply nav-link font-semibold text-[rgb(var(--color-brand-primary-active))];
-  }
-
-  .mobile-nav-link {
-    @apply block rounded-[var(--radius-md)] px-4 py-2 text-sm text-[rgb(var(--color-text-primary))] hover:bg-[rgb(var(--color-bg-secondary))];
-    transition: background-color var(--transition-standard) var(--ease-standard);
-  }
-
-  /* Cards */
+  /*
+  |--------------------------------------------------------------------------
+  | Cards
+  |--------------------------------------------------------------------------
+  */
   .card {
-    @apply rounded-[var(--radius-lg)] bg-[rgb(var(--color-bg-primary))] p-6 shadow-[var(--shadow-base)] transition-shadow;
+    @apply rounded-[var(--radius-lg)] border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-primary))] p-6 shadow-[var(--shadow-base)] transition-shadow;
     transition-duration: var(--transition-standard);
   }
 
   .card-hover {
-    @apply card hover:shadow-[var(--shadow-lg)];
+    @apply card hover:shadow-[var(--shadow-lg)] hover:-translate-y-1;
   }
 
-  /* Forms */
-  .input {
-    @apply rounded-[var(--radius-base)] border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-primary))] px-3 py-2 text-[rgb(var(--color-text-primary))] placeholder-[rgb(var(--color-text-tertiary))] focus:border-[rgb(var(--color-brand-primary))] focus:outline-none focus:ring-1 focus:ring-[rgb(var(--color-brand-primary))];
+  /*
+  |--------------------------------------------------------------------------
+  | Forms
+  |--------------------------------------------------------------------------
+  */
+  .form-label {
+    @apply mb-1 block text-sm font-medium text-[rgb(var(--color-text-secondary))];
+  }
+
+  .form-input {
+    @apply w-full rounded-[var(--radius-base)] border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-primary))] px-3 py-2 text-[rgb(var(--color-text-primary))] placeholder-[rgb(var(--color-text-secondary))] focus:border-[rgb(var(--color-brand-primary))] focus:outline-none focus:ring-1 focus:ring-[rgb(var(--color-brand-primary))];
     transition: border-color var(--transition-standard) var(--ease-standard);
   }
 
-  /* Logo */
+  /*
+  |--------------------------------------------------------------------------
+  | Links & Navigation
+  |--------------------------------------------------------------------------
+  */
+  .nav-link {
+    @apply rounded-[var(--radius-md)] px-3 py-2 text-[rgb(var(--color-text-secondary))] transition-colors hover:text-[rgb(var(--color-text-primary))] hover:bg-[rgb(var(--color-bg-secondary))];
+  }
+
+  .nav-link-active {
+    @apply nav-link font-semibold text-[rgb(var(--color-brand-primary))];
+  }
+
+  /*
+  |--------------------------------------------------------------------------
+  | Alerts & Badges
+  |--------------------------------------------------------------------------
+  */
+  .alert {
+    @apply rounded-[var(--radius-md)] border p-4;
+  }
+  .alert-info {
+    @apply alert border-[rgb(var(--color-info)_/_0.5)] bg-[rgb(var(--color-info)_/_0.1)] text-[rgb(var(--color-info))];
+  }
+  .alert-success {
+    @apply alert border-[rgb(var(--color-success)_/_0.5)] bg-[rgb(var(--color-success)_/_0.1)] text-[rgb(var(--color-success))];
+  }
+  .alert-error {
+    @apply alert border-[rgb(var(--color-error)_/_0.5)] bg-[rgb(var(--color-error)_/_0.1)] text-[rgb(var(--color-error))];
+  }
+
+  .badge {
+    @apply inline-flex items-center rounded-[var(--radius-full)] px-2.5 py-0.5 text-xs font-semibold;
+  }
+  .badge-primary {
+    @apply badge bg-[rgb(var(--color-brand-primary)_/_0.1)] text-[rgb(var(--color-brand-primary))];
+  }
+
+  /*
+  |--------------------------------------------------------------------------
+  | Logo
+  |--------------------------------------------------------------------------
+  */
   .logo {
     @apply h-8 transition-all active:scale-110;
     filter: var(--filter-logo);
@@ -326,26 +391,5 @@
 
   .dark .logo:hover {
     filter: var(--filter-logo-dark-hover);
-  }
-
-  /* Utilities */
-  .surface-primary {
-    @apply bg-[rgb(var(--color-bg-primary))];
-  }
-
-  .surface-secondary {
-    @apply bg-[rgb(var(--color-bg-secondary))];
-  }
-
-  .text-primary {
-    @apply text-[rgb(var(--color-text-primary))];
-  }
-
-  .text-secondary {
-    @apply text-[rgb(var(--color-text-secondary))];
-  }
-
-  .border-default {
-    @apply border-[rgb(var(--color-border))];
   }
 }
