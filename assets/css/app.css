@@ -1,55 +1,43 @@
 /**
  * ==========================================================================
- * MAIN STYLESHEET - TAILWIND CSS V4
+ * MAIN STYLESHEET — TAILWIND CSS V4
  * ==========================================================================
  *
- *
- * HOW TO USE THEMES:
- * - Default: <body> (blue theme, light mode)
- * - Dark Mode: <body class="dark">
- * - Green Theme: <body class="theme-green">
- * - Purple Theme: <body class="theme-purple">
- * - Combined: <body class="dark theme-green">
+ * THEME USAGE:
+ *   - Default: <body> (blue theme, light mode)
+ *   - Dark Mode: <body class="dark">
+ *   - Green Theme: <body class="theme-green">
+ *   - Purple Theme: <body class="theme-purple">
+ *   - Combined: <body class="dark theme-green">
  */
 
+/* Import Tailwind base styles */
 @import "tailwindcss";
 
 /* ==========================================================================
    🎛️ CONFIGURATION LAYER
    ========================================================================== */
 
-/* 
- * CUSTOM VARIANTS
- * → Move to: config/variants.css
- * Creates custom conditional styling (like hover: or md:)
- */
+/* --- CUSTOM VARIANTS -----------------------------------------------
+   Move to: config/variants.css
+   Custom conditional styling (like hover: or md:)
+--------------------------------------------------------------------- */
 @custom-variant dark (&:where(.dark, .dark *));
 @custom-variant theme-green (&:where(.theme-green, .theme-green *));
 @custom-variant theme-purple (&:where(.theme-purple, .theme-purple *));
 
-/* 
- * DESIGN TOKENS - The Foundation of Your Design System
- * → Move to: config/design-tokens.css
- * 
- * These CSS variables are your single source of truth for:
- * - Colors, typography, spacing, timing, shadows
- * - Used by all components and themes
- */
+/* --- DESIGN TOKENS -------------------------------------------------
+   Move to: config/design-tokens.css
+   CSS variables for colors, typography, spacing, timing, shadows.
+--------------------------------------------------------------------- */
 @theme {
-  /*
-  |--------------------------------------------------------------------------
-  | SYSTEM DESIGN TOKENS
-  |--------------------------------------------------------------------------
-  | The fundamental building blocks - not theme-specific
-  */
-
-  /* Typography Scale */
+  /* SYSTEM DESIGN TOKENS — Not theme-specific */
   --font-sans: ui-sans-serif, system-ui, sans-serif;
   --font-serif: ui-serif, Georgia, serif;
   --font-mono: ui-monospace, "SF Mono", Monaco, "Cascadia Code", "Roboto Mono",
     Consolas, "Courier New", monospace;
 
-  /* Spacing Scale (4px grid system) */
+  /* Spacing Scale (4px grid) */
   --spacing-unit: 0.25rem;
   --space-xs: calc(var(--spacing-unit) * 1); /* 4px */
   --space-sm: calc(var(--spacing-unit) * 2); /* 8px */
@@ -87,41 +75,29 @@
   --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1),
     0 10px 10px -5px rgb(0 0 0 / 0.04);
 
-  /*
-  |--------------------------------------------------------------------------
-  | COLOR PRIMITIVES
-  |--------------------------------------------------------------------------
-  | Raw color values - the palette foundation
-  */
-
-  /* Blue Scale (Default Theme) */
+  /* COLOR PRIMITIVES — Palette foundation */
   --blue-50: 239 246 255;
   --blue-100: 219 234 254;
   --blue-500: 59 130 246;
   --blue-600: 37 99 235;
   --blue-700: 29 78 216;
   --blue-900: 30 58 138;
-
-  /* Blue Dark Mode Variants */
   --blue-dark-400: 96 165 250;
   --blue-dark-500: 59 130 246;
   --blue-dark-600: 37 99 235;
 
-  /* Green Scale */
   --green-50: 240 253 244;
   --green-500: 34 197 94;
   --green-600: 22 163 74;
   --green-700: 21 128 61;
   --green-dark-400: 74 222 128;
 
-  /* Purple Scale */
   --purple-50: 250 245 255;
   --purple-500: 168 85 247;
   --purple-600: 147 51 234;
   --purple-700: 126 34 206;
   --purple-dark-400: 196 181 253;
 
-  /* Neutral Scale */
   --gray-50: 249 250 251;
   --gray-100: 243 244 246;
   --gray-200: 229 231 235;
@@ -139,43 +115,27 @@
   --color-error: 239 68 68; /* red-500 */
   --color-info: 59 130 246; /* blue-500 */
 
-  /*
-  |--------------------------------------------------------------------------
-  | SEMANTIC COLOR SYSTEM
-  |--------------------------------------------------------------------------
-  | Meaningful color names that components use
-  | Default to light mode - themes override these
-  */
-
-  /* Brand Colors */
+  /* SEMANTIC COLOR SYSTEM — Used by components (light mode default) */
   --color-primary: var(--blue-500);
   --color-primary-hover: var(--blue-600);
   --color-primary-active: var(--blue-700);
 
-  /* Surface Colors */
   --color-surface-primary: 255 255 255; /* white */
   --color-surface-secondary: var(--gray-50); /* light gray */
   --color-surface-tertiary: var(--gray-100); /* lighter gray */
   --color-surface-accent: var(--blue-50); /* brand tinted */
 
-  /* Text Colors */
   --color-text-primary: var(--gray-900); /* darkest */
   --color-text-secondary: var(--gray-600); /* medium */
   --color-text-tertiary: var(--gray-400); /* light */
   --color-text-inverse: 255 255 255; /* white */
   --color-text-muted: var(--gray-500); /* muted */
 
-  /* Border Colors */
   --color-border-primary: var(--gray-200); /* subtle */
   --color-border-secondary: var(--gray-300); /* visible */
   --color-border-strong: var(--gray-400); /* prominent */
 
-  /*
-  |--------------------------------------------------------------------------
-  | SPECIALIZED EFFECTS
-  |--------------------------------------------------------------------------
-  | Logo filters and custom effects
-  */
+  /* SPECIALIZED EFFECTS — Logo filters & custom effects */
   --filter-logo: brightness(0) saturate(100%) invert(26%) sepia(69%)
     saturate(4649%) hue-rotate(218deg) brightness(94%) contrast(93%);
   --filter-logo-hover: brightness(0) saturate(100%) invert(18%) sepia(85%)
@@ -186,13 +146,10 @@
     saturate(1476%) hue-rotate(198deg) brightness(97%) contrast(92%);
 }
 
-/* 
- * THEME OVERRIDES
- * → Move to: config/themes.css
- * 
- * Simple class selectors that override CSS variables
- * Add new themes by creating new classes here
- */
+/* --- THEME OVERRIDES -----------------------------------------------
+   Move to: config/themes.css
+   Class selectors override CSS variables for themes.
+--------------------------------------------------------------------- */
 
 /* Dark Mode Theme */
 .dark {
@@ -246,12 +203,10 @@
    🏗️ BASE LAYER
    ========================================================================== */
 
-/* 
- * BASE STYLES
- * → Move to: base/globals.css
- * 
- * HTML element defaults and global styles
- */
+/* --- BASE STYLES --------------------------------------------------
+   Move to: base/globals.css
+   HTML element defaults and global styles.
+--------------------------------------------------------------------- */
 @layer base {
   html {
     @apply scroll-smooth;
@@ -289,12 +244,10 @@
     color: rgb(var(--color-text-primary));
   }
 
-  /* 
-   * KEYFRAMES
-   * → Move to: base/keyframes.css
-   * 
-   * Defines the steps and styles for CSS animations.
-   */
+  /* --- KEYFRAMES --------------------------------------------------
+     Move to: base/keyframes.css
+     CSS animations.
+  ------------------------------------------------------------------- */
   @keyframes fadeIn {
     from {
       opacity: 0;
@@ -323,26 +276,19 @@
    ========================================================================== */
 
 @layer components {
-  /*
-  |--------------------------------------------------------------------------
-  | LAYOUT COMPONENTS
-  | → Move to: components/layout.css
-  |--------------------------------------------------------------------------
-  */
+  /* --- LAYOUT COMPONENTS ------------------------------------------
+     Move to: components/layout.css
+  --------------------------------------------------------------- */
   .container {
     @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
   }
-
   .section {
     padding: var(--space-2xl) 0;
   }
 
-  /*
-  |--------------------------------------------------------------------------
-  | BUTTON COMPONENTS
-  | → Move to: components/buttons.css
-  |--------------------------------------------------------------------------
-  */
+  /* --- BUTTON COMPONENTS ------------------------------------------
+     Move to: components/buttons.css
+  --------------------------------------------------------------- */
   .btn {
     @apply inline-flex items-center justify-center font-semibold;
     padding: var(--space-sm) var(--space-md);
@@ -351,64 +297,51 @@
     cursor: pointer;
     border: none;
   }
-
   .btn:disabled {
     @apply cursor-not-allowed opacity-50;
   }
-
   .btn-primary {
     background: rgb(var(--color-primary));
     color: rgb(var(--color-text-inverse));
   }
-
   .btn-primary:hover:not(:disabled) {
     background: rgb(var(--color-primary-hover));
     transform: translateY(-1px);
     box-shadow: var(--shadow-md);
   }
-
   .btn-primary:active {
     background: rgb(var(--color-primary-active));
     transform: translateY(0);
   }
-
   .btn-secondary {
     background: transparent;
     border: 1px solid rgb(var(--color-border-secondary));
     color: rgb(var(--color-primary));
   }
-
   .btn-secondary:hover:not(:disabled) {
     background: rgb(var(--color-surface-secondary));
     border-color: rgb(var(--color-primary));
   }
-
   .btn-ghost {
     background: transparent;
     color: rgb(var(--color-primary));
   }
-
   .btn-ghost:hover:not(:disabled) {
     background: rgb(var(--color-primary) / 0.1);
   }
-
   /* Button Sizes */
   .btn-sm {
     padding: var(--space-xs) var(--space-sm);
     font-size: 0.875rem;
   }
-
   .btn-lg {
     padding: var(--space-md) var(--space-lg);
     font-size: 1.125rem;
   }
 
-  /*
-  |--------------------------------------------------------------------------
-  | CARD COMPONENTS
-  | → Move to: components/cards.css
-  |--------------------------------------------------------------------------
-  */
+  /* --- CARD COMPONENTS --------------------------------------------
+     Move to: components/cards.css
+  --------------------------------------------------------------- */
   .card {
     background: rgb(var(--color-surface-primary));
     border: 1px solid rgb(var(--color-border-primary));
@@ -418,44 +351,35 @@
     transition: box-shadow var(--duration-base) var(--ease-standard),
       transform var(--duration-base) var(--ease-standard);
   }
-
   .card-interactive {
     cursor: pointer;
   }
-
   .card-interactive:hover {
     box-shadow: var(--shadow-md);
     transform: translateY(-2px);
   }
-
   .card-header {
     margin-bottom: var(--space-md);
     padding-bottom: var(--space-md);
     border-bottom: 1px solid rgb(var(--color-border-primary));
   }
-
   .card-footer {
     margin-top: var(--space-md);
     padding-top: var(--space-md);
     border-top: 1px solid rgb(var(--color-border-primary));
   }
 
-  /*
-  |--------------------------------------------------------------------------
-  | FORM COMPONENTS
-  | → Move to: components/forms.css
-  |--------------------------------------------------------------------------
-  */
+  /* --- FORM COMPONENTS --------------------------------------------
+     Move to: components/forms.css
+  --------------------------------------------------------------- */
   .form-group {
     margin-bottom: var(--space-md);
   }
-
   .form-label {
     @apply block font-medium mb-1;
     color: rgb(var(--color-text-secondary));
     font-size: 0.875rem;
   }
-
   .form-input {
     @apply w-full;
     background: rgb(var(--color-surface-primary));
@@ -466,23 +390,18 @@
     transition: border-color var(--duration-base) var(--ease-standard),
       box-shadow var(--duration-base) var(--ease-standard);
   }
-
   .form-input:focus {
     outline: none;
     border-color: rgb(var(--color-primary));
     box-shadow: 0 0 0 3px rgb(var(--color-primary) / 0.1);
   }
-
   .form-input::placeholder {
     color: rgb(var(--color-text-tertiary));
   }
 
-  /*
-  |--------------------------------------------------------------------------
-  | NAVIGATION COMPONENTS
-  | → Move to: components/navigation.css
-  |--------------------------------------------------------------------------
-  */
+  /* --- NAVIGATION COMPONENTS --------------------------------------
+     Move to: components/navigation.css
+  --------------------------------------------------------------- */
   .nav-link {
     @apply block;
     padding: var(--space-sm) var(--space-md);
@@ -491,73 +410,59 @@
     text-decoration: none;
     transition: all var(--duration-base) var(--ease-standard);
   }
-
   .nav-link:hover {
     color: rgb(var(--color-text-primary));
     background: rgb(var(--color-surface-secondary));
   }
-
   .nav-link-active {
     @apply font-semibold;
     color: rgb(var(--color-primary));
     background: rgb(var(--color-surface-accent));
   }
-
   .breadcrumb {
     @apply flex items-center;
     color: rgb(var(--color-text-muted));
     font-size: 0.875rem;
   }
-
   .breadcrumb-item:not(:last-child)::after {
     content: "/";
     margin: 0 var(--space-sm);
     color: rgb(var(--color-text-tertiary));
   }
 
-  /*
-  |--------------------------------------------------------------------------
-  | ALERT COMPONENTS
-  | → Move to: components/alerts.css
-  |--------------------------------------------------------------------------
-  */
+  /* --- ALERT COMPONENTS -------------------------------------------
+     Move to: components/alerts.css
+  --------------------------------------------------------------- */
   .alert {
     padding: var(--space-md);
     border-radius: var(--radius-base);
     border: 1px solid;
     margin-bottom: var(--space-md);
   }
-
   .alert-info {
     background: rgb(var(--color-info) / 0.1);
     border-color: rgb(var(--color-info) / 0.3);
     color: rgb(var(--color-info));
   }
-
   .alert-success {
     background: rgb(var(--color-success) / 0.1);
     border-color: rgb(var(--color-success) / 0.3);
     color: rgb(var(--color-success));
   }
-
   .alert-warning {
     background: rgb(var(--color-warning) / 0.1);
     border-color: rgb(var(--color-warning) / 0.3);
     color: rgb(var(--color-warning));
   }
-
   .alert-error {
     background: rgb(var(--color-error) / 0.1);
     border-color: rgb(var(--color-error) / 0.3);
     color: rgb(var(--color-error));
   }
 
-  /*
-  |--------------------------------------------------------------------------
-  | BADGE COMPONENTS
-  | → Move to: components/badges.css
-  |--------------------------------------------------------------------------
-  */
+  /* --- BADGE COMPONENTS -------------------------------------------
+     Move to: components/badges.css
+  --------------------------------------------------------------- */
   .badge {
     @apply inline-flex items-center font-medium;
     padding: calc(var(--space-xs) / 2) var(--space-sm);
@@ -565,64 +470,49 @@
     font-size: 0.75rem;
     line-height: 1;
   }
-
   .badge-primary {
     background: rgb(var(--color-primary) / 0.1);
     color: rgb(var(--color-primary));
   }
-
   .badge-success {
     background: rgb(var(--color-success) / 0.1);
     color: rgb(var(--color-success));
   }
 
-  /*
-  |--------------------------------------------------------------------------
-  | LOGO COMPONENT
-  | → Move to: components/logo.css
-  |--------------------------------------------------------------------------
-  */
+  /* --- LOGO COMPONENT ---------------------------------------------
+     Move to: components/logo.css
+  --------------------------------------------------------------- */
   .logo {
     height: 2rem; /* 32px */
     width: auto;
     transition: all var(--duration-slow) var(--ease-standard);
     filter: var(--filter-logo);
   }
-
   .logo:hover {
     filter: var(--filter-logo-hover);
     transform: scale(1.05);
   }
-
   .logo:active {
     transform: scale(0.95);
   }
-
   /* Dark mode logo variants */
   .dark .logo {
     filter: var(--filter-logo-dark);
   }
-
   .dark .logo:hover {
     filter: var(--filter-logo-dark-hover);
   }
 
-  /*
-  |--------------------------------------------------------------------------
-  | UTILITY COMPONENTS
-  | → Move to: components/utilities.css
-  |--------------------------------------------------------------------------
-  */
-
+  /* --- UTILITY COMPONENTS -----------------------------------------
+     Move to: components/utilities.css
+  --------------------------------------------------------------- */
   /* Surface Utilities */
   .surface-primary {
     background: rgb(var(--color-surface-primary));
   }
-
   .surface-secondary {
     background: rgb(var(--color-surface-secondary));
   }
-
   .surface-accent {
     background: rgb(var(--color-surface-accent));
   }
@@ -631,11 +521,9 @@
   .text-primary {
     color: rgb(var(--color-text-primary));
   }
-
   .text-secondary {
     color: rgb(var(--color-text-secondary));
   }
-
   .text-muted {
     color: rgb(var(--color-text-muted));
   }
@@ -644,7 +532,6 @@
   .border-primary {
     border-color: rgb(var(--color-border-primary));
   }
-
   .border-strong {
     border-color: rgb(var(--color-border-strong));
   }
@@ -653,7 +540,6 @@
   .animate-fade-in {
     animation: fadeIn var(--duration-slow) var(--ease-standard);
   }
-
   .animate-scale-in {
     animation: scaleIn var(--duration-base) var(--ease-bounce);
   }
