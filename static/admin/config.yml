@@ -27,7 +27,7 @@ collections:
     create: true
     slug: "{{slug}}"
     path: "{{year}}/{{month}}/{{day}}/{{slug}}/index"
-    filter: { field: layout, value: single }
+    #filter: { field: layout, value: single }
     fields:
       - { label: Title, name: title, widget: string }
       - { label: Type, name: type, widget: hidden, default: post }

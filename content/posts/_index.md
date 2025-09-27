@@ -1,9 +1,9 @@
 ---
 title: My Blog
-type: page
+type: posts
 layout: list
 description: My personal blog
-url: /blog
+url: /blog/
 ---
 
 Here you can find all my blog posts.
