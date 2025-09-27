@@ -1,13 +1,12 @@
 :root {
-  --primary-color: #ff0082;
-  --logo-filter: invert(13%) sepia(99%) saturate(7471%) hue-rotate(316deg)
-    brightness(101%) contrast(101%);
+  --filter-logo: brightness(0) saturate(100%) invert(26%) sepia(69%)
+    saturate(4649%) hue-rotate(218deg) brightness(94%) contrast(93%);
 }
 
 /* Resize and color the CMS logo */
 [class*="CustomIconWrapper"] img {
-  max-width: 70%;
-  filter: var(--logo-filter);
+  max-width: 50%;
+  filter: var(--filter-logo);
 }
 
 /* Hide Decap logo*/
