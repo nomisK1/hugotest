@@ -1,0 +1,30 @@
+{{ define "main" }}
+<main class="container section animate-fade-in">
+    <nav class="mb-6">
+        <a href="/blog/" class="btn btn-secondary">&larr; Blog</a>
+    </nav>
+    <header class="mb-8">
+        <h1 class="text-3xl font-bold mb-2 text-primary">Browse by Month</h1>
+    </header>
+    <section class="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+        {{ range .Data.Terms.Alphabetical }}
+        {{ $parts := split .Page.Title "/" }}
+        {{ $year := index $parts 0 }}
+        {{ $month := index $parts 1 }}
+        <article class="card card-interactive h-full flex flex-col justify-between">
+            <header class="card-header mb-2">
+                <a href="{{ .Page.Permalink }}" class="text-lg font-semibold text-primary hover:underline">
+                    {{ $year }}/{{ $month }}
+                </a>
+                <div class="text-muted text-sm">
+                    <a href="/blog/{{ $year }}/" class="hover:underline">{{ $year }}</a>
+                </div>
+            </header>
+            <footer class="card-footer mt-auto">
+                <span class="badge badge-primary">{{ .Count }} {{ if eq .Count 1 }}post{{ else }}posts{{ end }}</span>
+            </footer>
+        </article>
+        {{ end }}
+    </section>
+</main>
+{{ end }}

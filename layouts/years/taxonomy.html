@@ -1,0 +1,24 @@
+{{ define "main" }}
+<main class="container section animate-fade-in">
+    <nav class="mb-6">
+        <a href="/blog/" class="btn btn-secondary">&larr; Blog</a>
+    </nav>
+    <header class="mb-8">
+        <h1 class="text-3xl font-bold mb-2 text-primary">Browse by Year</h1>
+    </header>
+    <section class="grid gap-4 sm:grid-cols-2 md:grid-cols-4">
+        {{ range .Data.Terms.ByCount }}
+        <article class="card card-interactive h-full flex flex-col justify-between text-center">
+            <header class="card-header mb-2">
+                <a href="{{ .Page.Permalink }}" class="text-2xl font-bold text-primary hover:underline mb-1 block">
+                    {{ .Page.Title }}
+                </a>
+            </header>
+            <footer class="card-footer mt-auto">
+                <span class="badge badge-primary">{{ .Count }} {{ if eq .Count 1 }}post{{ else }}posts{{ end }}</span>
+            </footer>
+        </article>
+        {{ end }}
+    </section>
+</main>
+{{ end }}
