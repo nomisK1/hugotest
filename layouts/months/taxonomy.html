@@ -13,7 +13,7 @@
         {{ $month := index $parts 1 }}
         <article class="card card-interactive h-full flex flex-col justify-between">
             <header class="card-header mb-2">
-                <a href="{{ .Page.Permalink }}" class="text-lg font-semibold text-primary hover:underline">
+                <a href="{{ .Page.RelPermalink }}" class="text-lg font-semibold text-primary hover:underline">
                     {{ $year }}/{{ $month }}
                 </a>
                 <div class="text-muted text-sm">
