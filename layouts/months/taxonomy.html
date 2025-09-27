@@ -7,7 +7,7 @@
         <h1 class="text-3xl font-bold mb-2 text-primary">Browse by Month</h1>
     </header>
     <section class="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
-        {{ range .Data.Terms.Alphabetical }}
+        {{ range .Data.Terms.Alphabetical.Reverse }}
         {{ $parts := split .Page.Title "/" }}
         {{ $year := index $parts 0 }}
         {{ $month := index $parts 1 }}
