@@ -1,6 +1,6 @@
 ---
 title: '{{ replace .Name "-" " " | title }}'
-type: post
+type: posts
 layout: single
 date: "{{ .Date }}"
 years: '{{ dateFormat "2006" .Date }}'

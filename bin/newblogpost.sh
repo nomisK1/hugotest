@@ -16,7 +16,7 @@ FILE_PATH="$FOLDER/index.md"
 
 # Create post and directory
 mkdir -p "$FOLDER"
-hugo new --kind post "$FILE_PATH"
+hugo new --kind posts "$FILE_PATH"
 
 # Replace auto-generated title
 sed -i "s/^title: .*/title: \"$TITLE\"/" "$FILE_PATH"

@@ -30,7 +30,7 @@ collections:
     #filter: { field: layout, value: single }
     fields:
       - { label: Title, name: title, widget: string }
-      - { label: Type, name: type, widget: hidden, default: post }
+      - { label: Type, name: type, widget: hidden, default: posts }
       - { label: Layout, name: layout, widget: hidden, default: single }
       - { label: Date, name: date, widget: datetime, default: "{{now}}" }
       - { label: Year, name: years, widget: hidden, default }
