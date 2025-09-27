@@ -20,17 +20,17 @@ logo_url: /svg/logo.svg
 publish_mode: simple
 
 collections:
-  - name: blog
+  - name: posts
     label: Blog
     label_singular: Post
-    folder: content/blog
+    folder: content/posts
     create: true
     slug: "{{slug}}"
     path: "{{year}}/{{month}}/{{day}}/{{slug}}/index"
     filter: { field: layout, value: single }
     fields:
       - { label: Title, name: title, widget: string }
-      - { label: Type, name: type, widget: hidden, default: blog }
+      - { label: Type, name: type, widget: hidden, default: post }
       - { label: Layout, name: layout, widget: hidden, default: single }
       - { label: Date, name: date, widget: datetime, default: "{{now}}" }
       - { label: Year, name: years, widget: hidden, default }

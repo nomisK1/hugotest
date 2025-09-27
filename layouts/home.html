@@ -8,7 +8,7 @@
 <div>
     <h2>Recent Posts</h2>
     <ul>
-        {{ range first 3 (where .Site.RegularPages "Section" "blog") }}
+        {{ range first 3 (where .Site.RegularPages "Section" "posts") }}
         <li>
             <a href="{{ .RelPermalink }}">{{ .Title }}</a>
         </li>
