@@ -1,6 +1,6 @@
 ---
 title: Testin
-type: post
+type: blog
 layout: single
 date: 2024-09-20T08:53:00.000+02:00
 years: 2024

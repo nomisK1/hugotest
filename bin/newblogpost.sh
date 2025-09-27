@@ -11,12 +11,12 @@ TITLE="$1"
 SLUG=$(echo "$TITLE" | tr '[:upper:]' '[:lower:]' \
                      | sed -E 's/[^a-z0-9]+/-/g' \
                      | sed -E 's/^-+|-+$//g')
-FOLDER="content/posts/$(date +%Y/%m/%d)/$SLUG"
+FOLDER="content/blog/$(date +%Y/%m/%d)/$SLUG"
 FILE_PATH="$FOLDER/index.md"
 
 # Create post and directory
 mkdir -p "$FOLDER"
-hugo new --kind post "$FILE_PATH"
+hugo new --kind blog "$FILE_PATH"
 
 # Replace auto-generated title
 sed -i "s/^title: .*/title: \"$TITLE\"/" "$FILE_PATH"

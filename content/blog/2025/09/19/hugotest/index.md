@@ -1,6 +1,6 @@
 ---
 title: "<4 Hugotest"
-type: post
+type: blog
 layout: single
 date: "2025-09-19T23:53:24+02:00"
 years: 2025
