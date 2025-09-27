@@ -1,6 +1,6 @@
 ---
 title: "Welcome"
-type: blog
+type: post
 layout: single
 date: "2023-07-17T23:46:44+02:00"
 years: 2023

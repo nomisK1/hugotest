@@ -3,7 +3,7 @@ languageCode = 'en-us'
 title = 'HUGOTEST'
 
 [permalinks]
-  blog = "/blog/:year/:month/:day/:slug/"
+  posts = "/blog/:year/:month/:day/:slug/"
   years  = "/blog/:slug/"
   months = "/blog/:slug/"
   days   = "/blog/:slug/"

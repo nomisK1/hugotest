@@ -1,8 +1,8 @@
 ---
-title: new
-type: blog
+title: nameMe draft
+type: post
 layout: single
-date: 2025-09-27T19:10:00.000+02:00
+date: 2025-09-27T19:09:00.000+02:00
 years: "2025"
 months: 2025/09
 days: 2025/09/27
