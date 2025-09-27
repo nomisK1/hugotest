@@ -3,30 +3,6 @@
  * MAIN STYLESHEET - TAILWIND CSS V4
  * ==========================================================================
  *
- * This file contains your complete design system built for Tailwind CSS v4.
- * It follows best practices for organization, theming, and modularity.
- *
- * REFACTORING ROADMAP:
- * When ready to modularize, split this file as follows:
- * 
- * 📁 config/
- *    ├── variants.css        → Lines 35-40 (@custom-variant definitions)
- *    ├── design-tokens.css   → Lines 42-150 (@theme block)
- *    └── themes.css          → Lines 152-185 (theme overrides)
- * 
- * 📁 base/
- *    └── globals.css         → Lines 187-210 (@layer base)
- * 
- * 📁 components/
- *    ├── layout.css          → Lines 220-225 (.container)
- *    ├── buttons.css         → Lines 230-255 (.btn-*)
- *    ├── cards.css           → Lines 260-275 (.card-*)
- *    ├── forms.css           → Lines 280-295 (.form-*)
- *    ├── navigation.css      → Lines 300-315 (.nav-*)
- *    ├── alerts.css          → Lines 320-345 (.alert-*)
- *    ├── badges.css          → Lines 350-360 (.badge-*)
- *    ├── logo.css            → Lines 365-385 (.logo)
- *    └── utilities.css       → Lines 390-415 (utility classes)
  *
  * HOW TO USE THEMES:
  * - Default: <body> (blue theme, light mode)
@@ -312,6 +288,34 @@
     background: rgb(var(--color-primary) / 0.2);
     color: rgb(var(--color-text-primary));
   }
+
+  /* 
+   * KEYFRAMES
+   * → Move to: base/keyframes.css
+   * 
+   * Defines the steps and styles for CSS animations.
+   */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
 }
 
 /* ==========================================================================
@@ -353,7 +357,6 @@
   }
 
   .btn-primary {
-    @apply btn;
     background: rgb(var(--color-primary));
     color: rgb(var(--color-text-inverse));
   }
@@ -370,7 +373,6 @@
   }
 
   .btn-secondary {
-    @apply btn;
     background: transparent;
     border: 1px solid rgb(var(--color-border-secondary));
     color: rgb(var(--color-primary));
@@ -382,7 +384,6 @@
   }
 
   .btn-ghost {
-    @apply btn;
     background: transparent;
     color: rgb(var(--color-primary));
   }
@@ -419,7 +420,7 @@
   }
 
   .card-interactive {
-    @apply card cursor-pointer;
+    cursor: pointer;
   }
 
   .card-interactive:hover {
@@ -497,7 +498,7 @@
   }
 
   .nav-link-active {
-    @apply nav-link font-semibold;
+    @apply font-semibold;
     color: rgb(var(--color-primary));
     background: rgb(var(--color-surface-accent));
   }
@@ -528,28 +529,24 @@
   }
 
   .alert-info {
-    @apply alert;
     background: rgb(var(--color-info) / 0.1);
     border-color: rgb(var(--color-info) / 0.3);
     color: rgb(var(--color-info));
   }
 
   .alert-success {
-    @apply alert;
     background: rgb(var(--color-success) / 0.1);
     border-color: rgb(var(--color-success) / 0.3);
     color: rgb(var(--color-success));
   }
 
   .alert-warning {
-    @apply alert;
     background: rgb(var(--color-warning) / 0.1);
     border-color: rgb(var(--color-warning) / 0.3);
     color: rgb(var(--color-warning));
   }
 
   .alert-error {
-    @apply alert;
     background: rgb(var(--color-error) / 0.1);
     border-color: rgb(var(--color-error) / 0.3);
     color: rgb(var(--color-error));
@@ -570,13 +567,11 @@
   }
 
   .badge-primary {
-    @apply badge;
     background: rgb(var(--color-primary) / 0.1);
     color: rgb(var(--color-primary));
   }
 
   .badge-success {
-    @apply badge;
     background: rgb(var(--color-success) / 0.1);
     color: rgb(var(--color-success));
   }
@@ -659,29 +654,7 @@
     animation: fadeIn var(--duration-slow) var(--ease-standard);
   }
 
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
   .animate-scale-in {
     animation: scaleIn var(--duration-base) var(--ease-bounce);
-  }
-
-  @keyframes scaleIn {
-    from {
-      opacity: 0;
-      transform: scale(0.9);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
   }
 }
