@@ -3,25 +3,28 @@
     <nav class="mb-6">
         <a href="/blog/" class="btn btn-secondary">&larr; Blog</a>
     </nav>
+
     <header class="mb-8">
         <h1 class="text-3xl font-bold mb-2 text-primary">Browse by Month</h1>
     </header>
+
     <section class="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
         {{ range .Data.Terms.Alphabetical.Reverse }}
-        {{ $parts := split .Page.Title "/" }}
-        {{ $year := index $parts 0 }}
-        {{ $month := index $parts 1 }}
         <article class="card card-interactive h-full flex flex-col justify-between">
             <header class="card-header mb-2">
                 <a href="{{ .Page.RelPermalink }}" class="text-lg font-semibold text-primary hover:underline">
-                    {{ $year }}/{{ $month }}
+                    {{ .Page.Date.Format "2006 - January" }}
                 </a>
                 <div class="text-muted text-sm">
-                    <a href="/blog/{{ $year }}/" class="hover:underline">{{ $year }}</a>
+                    <a href='/blog/{{ .Page.Date.Format "2006" }}/' class="hover:underline">
+                        {{ .Page.Date.Format "2006" }}
+                    </a>
                 </div>
             </header>
             <footer class="card-footer mt-auto">
-                <span class="badge badge-primary">{{ .Count }} {{ if eq .Count 1 }}post{{ else }}posts{{ end }}</span>
+                <span class="badge badge-primary">
+                    {{ .Count }} {{ cond (eq .Count 1) "post" "posts" }}
+                </span>
             </footer>
         </article>
         {{ end }}
