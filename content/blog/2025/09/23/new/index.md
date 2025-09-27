@@ -1,12 +1,12 @@
 ---
-title: "new"
+title: new
 type: blog
 layout: single
-date: 2025-09-23T00:00:00.000+02:00
+date: 2025-09-27T19:10:00.000+02:00
 years: "2025"
 months: 2025/09
-days: 2025/09/23
-draft: true
+days: 2025/09/27
+draft: false
 author: null
 description: null
 categories: []
