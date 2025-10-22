@@ -21,7 +21,7 @@
     "url": "https://github.com/nomisK1/hugotest/issues"
   },
   "homepage": "https://github.com/nomisK1/hugotest#readme",
-  "dependencies": {
+  "devDependencies": {
     "@tailwindcss/cli": "^4.1.11",
     "tailwindcss": "^4.1.11"
   }
